@@ -7,7 +7,10 @@ Vue.component('menu-card',{
         <div class="view overlay">
                 <img class="card-img-bottom img-fluid"
                     :src= item.imagen
-                    alt="Card image cap">
+                    alt="Card image cap" >
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
         </div>
         <!-- Card content -->
         <div class="card-body elegant-color white-text rounded-bottom">

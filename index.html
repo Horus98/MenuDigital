@@ -16,39 +16,11 @@
     <title>Menu</title>
 </head>
 
-
-
-
-
-
 <body>
-    
     <div id="menu">
-        
-        <nav id="navbar-example2" class="navbar fixed-top navbar-expand-lg navbar-dark elegant-color">
-            <a class="navbar-brand" href="#">Mulaika</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#presentacion">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#carta">Menú</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Llamar Mozo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#">Ver Pedido</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <nav-bar></nav-bar>
         <br><br><br>
+        {{itemsSeleccionados}}
         <div class="container mt-5 ">
             <div data-spy="scroll" data-target="#navbar-example2" class="scrollspy-example" data-offset="0">
                 <section id="home">
@@ -82,27 +54,14 @@
                     <h2 class="text-center mt-5 subFont" id="carta">Aqui encontrará toda nuestra carta</h2>
                     <h4 class="text-danger mt-5 subFont">Cervezas</h4>
                     <hr style="background-color:rgb(56, 55, 55); height: 1px;">
-
                     <div class="row">
-                        
-                            <menu-card v-for = "item of cervezas" :item= "item"></menu-card>
-                        
+                        <menu-card v-for="item of cervezas" :item="item"></menu-card>
                     </div>
-                    
-
                 </section>
             </div>
         </div>
     </div>
 </body>
-
-
-
-
-
-
-
-
 
 
 <!-- JQuery -->
@@ -116,8 +75,8 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/vue"></script>
+<script src="Components/navBar.js"></script>
 <script src="Components/menuCard.js"></script>
-
 <script src="menu.js"></script>
 
 </html>
