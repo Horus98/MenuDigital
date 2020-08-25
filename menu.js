@@ -4,7 +4,7 @@ const menu = new Vue({
     data() {
         return {
             cervezas : [{
-                "id": 5,
+                "id": 1,
                 "descripcion":"Rubia",
                 "nombre":"IPA",
                 "precio": 125.00,
@@ -18,14 +18,14 @@ const menu = new Vue({
                 "imagen": "https://i0.wp.com/www.buenosbares.com/wp-content/uploads/2017/10/IPA-la-nueva-especialidad-de-Cerveza-Imperial.jpg?fit=4000%2C2670"
             },
             {
-                "id": 12,
+                "id": 3,
                 "descripcion":"Dorada",
                 "nombre":"APA",
                 "precio": 180.00,
                 "imagen": "https://i0.wp.com/www.buenosbares.com/wp-content/uploads/2017/10/IPA-la-nueva-especialidad-de-Cerveza-Imperial.jpg?fit=4000%2C2670"
             },
             {
-                "id": 32,
+                "id": 4,
                 "descripcion":"Rubia",
                 "nombre":"Honey",
                 "precio": 120.00,
@@ -39,35 +39,35 @@ const menu = new Vue({
                 "imagen": "https://images-na.ssl-images-amazon.com/images/I/61Gj3yQ-dEL._AC_SL1500_.jpg"
             },
             {
-                "id": 2,
+                "id": 6,
                 "descripcion":"Roja",
                 "nombre":"Irish",
                 "precio": 120.00,
                 "imagen": "https://i0.wp.com/www.buenosbares.com/wp-content/uploads/2017/10/IPA-la-nueva-especialidad-de-Cerveza-Imperial.jpg?fit=4000%2C2670"
             },
             {
-                "id": 5,
+                "id": 7,
                 "descripcion":"Rubia",
                 "nombre":"IPA",
                 "precio": 125.00,
                 "imagen": "https://images-na.ssl-images-amazon.com/images/I/61Gj3yQ-dEL._AC_SL1500_.jpg"
             },
             {
-                "id": 2,
+                "id": 8,
                 "descripcion":"Roja",
                 "nombre":"Irish",
                 "precio": 120.00,
                 "imagen": "https://i0.wp.com/www.buenosbares.com/wp-content/uploads/2017/10/IPA-la-nueva-especialidad-de-Cerveza-Imperial.jpg?fit=4000%2C2670"
             },
             {
-                "id": 5,
+                "id": 9,
                 "descripcion":"Rubia",
                 "nombre":"IPA",
                 "precio": 125.00,
                 "imagen": "https://images-na.ssl-images-amazon.com/images/I/61Gj3yQ-dEL._AC_SL1500_.jpg"
             },
             {
-                "id": 2,
+                "id": 10,
                 "descripcion":"Roja",
                 "nombre":"Irish",
                 "precio": 120.00,
@@ -92,14 +92,16 @@ const menu = new Vue({
         },
         quitarItem(item){
             let key = item.id;
-            let value = this.cantidadItemSeleccionado.get(key) - 1;
-            if(value <= 0){
-                this.cantidadItemSeleccionado.delete(key);
-                this.itemsSeleccionados.delete(key);
-            }
-            this.cantidadItemSeleccionado.set(key,value);
-            console.log(this.cantidadItemSeleccionado);
-            console.log(this.itemsSeleccionados);
+            if(this.cantidadItemSeleccionado.has(key)){
+                let value = this.cantidadItemSeleccionado.get(key) - 1;
+                if(value <= 0){
+                    this.cantidadItemSeleccionado.delete(key);
+                    this.itemsSeleccionados.delete(item);
+                }
+                else
+                    this.cantidadItemSeleccionado.set(key,value);
+             }
         }
     }
 });
+
