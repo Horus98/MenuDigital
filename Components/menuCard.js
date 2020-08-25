@@ -48,10 +48,12 @@ Vue.component('menu-card',{
                 this.cantidad--;  
                 this.total -= this.precio;  
             }
+            this.$emit('restar',this.item);
         },
         sumar() {
             this.cantidad++;
             this.total += this.precio;
+            this.$emit('agregar',this.item);
         }
     }
 });

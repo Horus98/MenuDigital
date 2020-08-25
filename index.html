@@ -20,7 +20,6 @@
     <div id="menu">
         <nav-bar></nav-bar>
         <br><br><br>
-        {{itemsSeleccionados}}
         <div class="container mt-5 ">
             <div data-spy="scroll" data-target="#navbar-example2" class="scrollspy-example" data-offset="0">
                 <section id="home">
@@ -55,7 +54,7 @@
                     <h4 class="text-danger mt-5 subFont">Cervezas</h4>
                     <hr style="background-color:rgb(56, 55, 55); height: 1px;">
                     <div class="row">
-                        <menu-card v-for="item of cervezas" :item="item"></menu-card>
+                        <menu-card v-for="item of cervezas" v-on:agregar="agregarItem($event,$event)" v-on:restar="quitarItem($event,$event)" :item="item"></menu-card>
                     </div>
                 </section>
             </div>

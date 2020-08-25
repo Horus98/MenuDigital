@@ -75,7 +75,31 @@ const menu = new Vue({
             },
         ],
         cantidad: 0,
-        itemsSeleccionados: [{}],
+        cantidadItemSeleccionado: new Map(),
+        itemsSeleccionados : new Set(),
+        }
+    },
+    methods:{
+        agregarItem(item){
+            let key = item.id;
+            let value = this.cantidadItemSeleccionado.get(key) + 1;
+            if(this.cantidadItemSeleccionado.has(key))
+                this.cantidadItemSeleccionado.set(key,value);
+            else{
+                this.cantidadItemSeleccionado.set(key,1);
+                this.itemsSeleccionados.add(item);
+            }
+        },
+        quitarItem(item){
+            let key = item.id;
+            let value = this.cantidadItemSeleccionado.get(key) - 1;
+            if(value <= 0){
+                this.cantidadItemSeleccionado.delete(key);
+                this.itemsSeleccionados.delete(key);
+            }
+            this.cantidadItemSeleccionado.set(key,value);
+            console.log(this.cantidadItemSeleccionado);
+            console.log(this.itemsSeleccionados);
         }
     }
 });
