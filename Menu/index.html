@@ -12,7 +12,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="style.css">
     <title>Menu</title>
 </head>
 
@@ -48,22 +48,23 @@
         </nav>
         <br><br><br>
         <div class="container mt-5 ">
-            <div data-spy="scroll" data-target="#navbar-example2" class="scrollspy-example"
-                data-offset="0">
+            <div data-spy="scroll" data-target="#navbar-example2" class="scrollspy-example" data-offset="0">
                 <section id="home">
-                    <h2 class="text-center" id="presentacion">Una <span class="text-danger">calida</span> Bienvenida</h2>
+                    <h2 class="text-center heading-font" id="presentacion">UNA <span class="text-danger">CALIDA</span>
+                        BIENVENIDA
+                    </h2>
                     <h5 class="text-center mt-5"> </h5>
 
                     <div class="row mt-5">
                         <div class="col-md-6 ">
-                            <h2>About <span class="text-danger">Mulaika</span></h2>
+                            <h2 class="secondary-font">About <span class="text-danger">Mulaika</span></h2>
                             <p>Somos un bar que tiene una larga historia, mucho para contar. </p>
                             <p>Here he comes Here comes Speed Racer. He's a demon on wheels. Believe it or not I'm
                                 walking
                                 on air. I never thought I could feel so free. Flying away on a wing and a prayer.</p>
                         </div>
-                        <div class="col-md-6">
-                            <h2>Informacion </h2>
+                        <div class="col-md-6 ">
+                            <h2 class="secondary-font">Informacion </h2>
                             <p>Ubicación: Alem 1234, Bahia Blanca, Argentina. </p>
                             <p> Telefono: 291 2578987</p>
                             <p> Email: Mulaika@Mulaika.com</p>
@@ -74,103 +75,15 @@
                         height="500" width="1100">
                 </section>
                 <br><br>
-                <section >
-                    <hr>
-                    <h2 class="text-center" id="carta">Aqui encontrará toda nuestra carta</h2>
-                    <h4 class="text-danger mt-5">Cervezas</h4>
-                    <hr>
+                <section>
+                    <hr style="background-color:rgb(56, 55, 55); height: 5px;">
+                    <h2 class="text-center mt-5 subFont" id="carta">Aqui encontrará toda nuestra carta</h2>
+                    <h4 class="text-danger mt-5 subFont">Cervezas</h4>
+                    <hr style="background-color:rgb(56, 55, 55); height: 1px;">
                     <!-- Card group -->
-                    <div class="card-group">
-
-                        <!-- Card -->
-                        <div class="card mb-4 mr-3 ">
-
-                            <!-- Card image -->
-                            <div class="view overlay">
-                                <a class="media-left">
-                                    <img class="card-img-bottom img-fluid"
-                                        src="https://images-na.ssl-images-amazon.com/images/I/61Gj3yQ-dEL._AC_SL1500_.jpg"
-                                        alt="Card image cap">
-                            </div>
-
-                            <!-- Card content -->
-                            <div class="card-body">
-
-                                <!-- Title -->
-                                <h4 class="card-title">IPA $150.00</h4>
-                                <!-- Text -->
-                                <p class="card-text">Cerveza lupulada y de amargor intenso, ideal para quienes deseen
-                                    una cerveza distinta.
-                                </p>
-                                <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                                <button type="button" class="btn btn-green btn-md">Agregar</button>
-                                <button type="button " class="btn btn-red btn-md">Quitar</button> <span
-                                    class="text-center">Cantidad: 0</span>
-                            </div>
-                        </div>
-                        <!-- Card -->
-
-                        <!-- Card -->
-                        <div class="card mb-4">
-
-                            <!-- Card image -->
-                            <div class="view overlay">
-                                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/48.jpg"
-                                    alt="Card image cap">
-                                <a href="#!">
-                                    <div class="mask rgba-white-slight"></div>
-                                </a>
-                            </div>
-
-                            <!-- Card content -->
-                            <div class="card-body">
-                                <!-- Title -->
-                                <h4 class="card-title">Card title</h4>
-                                <!-- Text -->
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the card's
-                                    content.</p>
-                                <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                                <button type="button" class="btn btn-primary btn-md">Read more</button>
-
-                            </div>
-                            <!-- Card content -->
-
-                        </div>
-                        <!-- Card -->
-
-                        <!-- Card -->
-                        <div class="card mb-4">
-
-                            <!-- Card image -->
-                            <div class="view overlay">
-                                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/77.jpg"
-                                    alt="Card image cap">
-                                <a href="#!">
-                                    <div class="mask rgba-white-slight"></div>
-                                </a>
-                            </div>
-
-                            <!-- Card content -->
-                            <div class="card-body">
-
-                                <!-- Title -->
-                                <h4 class="card-title">Card title</h4>
-                                <!-- Text -->
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the card's
-                                    content.</p>
-                                <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                                <button type="button" class="btn btn-primary btn-md">Read more</button>
-
-                            </div>
-                            <!-- Card content -->
-
-                        </div>
-                        <!-- Card -->
-
+                    <div class="card-deck">
+                        <menu-card></menu-card>
+                        <menu-card></menu-card>
                     </div>
                     <!-- Card group -->
 
@@ -179,8 +92,6 @@
         </div>
     </div>
 </body>
-
-
 
 
 
@@ -202,7 +113,8 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/vue"></script>
-<script src="menu.js"></script>
+<script src="Components/menuCard.js"></script>
 
+<script src="menu.js"></script>
 
 </html>
