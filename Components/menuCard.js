@@ -6,38 +6,49 @@ Vue.component('menu-card',{
         <!-- Card image -->
         <div class="view overlay">
                 <img class="card-img-bottom img-fluid"
-                    src="https://images-na.ssl-images-amazon.com/images/I/61Gj3yQ-dEL._AC_SL1500_.jpg"
+                    :src= item.imagen
                     alt="Card image cap">
         </div>
         <!-- Card content -->
         <div class="card-body elegant-color white-text rounded-bottom">
             <!-- Title -->
-            <h4 class="card-title">IPA $150.00</h4>
+            <h4 class="card-title">{{item.nombre}} $ {{new Intl.NumberFormat("de-DE").format(item.precio)}}</h4>
             <!-- Text -->
-            <p class="card-text white-text">Cerveza lupulada y de amargor intenso, ideal para quienes deseen
-                una cerveza distinta.
+            <p class="card-text white-text">{{item.descripcion}}
             </p>
             <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-            <button type="button" class="btn btn-green btn-sm btn-circle " @click="cantidad++"><i class="fas fa-plus"></i></button>
-            <span class="text-center">Cantidad: {{cantidad}}</span>
             <button type="button " class="btn btn-red btn-sm btn-circle"  @click= restar ><i class="fas fa-minus"></i></button>
+            <span class="text-center">Cantidad: {{cantidad}}</span>   
+            <button type="button" class="btn btn-green btn-sm btn-circle " @click= sumar ><i class="fas fa-plus"></i></button>
+            <span class="text-center ml-5">Total: $ {{total}}</span>
            
         </div>
     </div>
     </div>
 
     `,
+    props : ['item'],
     data(){
       return{
-        cantidad: 0
+        cantidad: 0,
+        total: 0, 
+        precio: this.item.precio,  
       }
     },
     methods: {
         restar(){
-            if(this.cantidad - 1 < 0)
+            if (this.cantidad - 1 < 0){
                 this.cantidad = 0;
-            else
-                this.cantidad--;
+                this.total = 0;
+            }
+            else{
+                this.cantidad--;  
+                this.total -= this.precio;  
+            }
+        },
+        sumar() {
+            this.cantidad++;
+            this.total += this.precio;
         }
     }
 });
