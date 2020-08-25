@@ -22,7 +22,9 @@
 
 
 <body>
+    
     <div id="menu">
+        
         <nav id="navbar-example2" class="navbar fixed-top navbar-expand-lg navbar-dark elegant-color">
             <a class="navbar-brand" href="#">Mulaika</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -80,12 +82,13 @@
                     <h2 class="text-center mt-5 subFont" id="carta">Aqui encontrará toda nuestra carta</h2>
                     <h4 class="text-danger mt-5 subFont">Cervezas</h4>
                     <hr style="background-color:rgb(56, 55, 55); height: 1px;">
-                    <!-- Card group -->
-                    <div class="card-deck">
-                        <menu-card></menu-card>
-                        <menu-card></menu-card>
+
+                    <div class="row">
+                        
+                            <menu-card v-for = "cerveza of cervezas"></menu-card>
+                        </div>
                     </div>
-                    <!-- Card group -->
+                    
 
                 </section>
             </div>

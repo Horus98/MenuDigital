@@ -1,7 +1,8 @@
 Vue.component('menu-card',{
     template: `
     <!-- Card -->
-    <div class="card mb-4">
+    <div class="card-group col-12 col-sm-12 col-md-6 col-lg-4">
+    <div class="card mt-3" >
         <!-- Card image -->
         <div class="view overlay">
                 <img class="card-img-bottom img-fluid"
@@ -21,6 +22,7 @@ Vue.component('menu-card',{
             <button type="button " class="btn btn-red btn-md" @click= restar >Quitar</button>
             <span class="text-center">Cantidad: {{cantidad}}</span>
         </div>
+    </div>
     </div>
 
     `,
