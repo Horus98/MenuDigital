@@ -83,5 +83,6 @@ const menu = new Vue({
         quitarItem(item) {
             store.commit('quitar', item);
         },
+        
     }
 });

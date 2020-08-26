@@ -20,19 +20,12 @@ Vue.component('modal-carrito', {
             </div>
             <div class="modal-body">
             <ul class="list-group">
-                <li class="list-group-item">Item 1</li>
-                <li class="list-group-item">Item 2</li>
-                <li class="list-group-item">Item 3</li>
-                <li class="list-group-item">Item 4</li>
-                <li class="list-group-item">Item 5</li>
-                <li class="list-group-item">Item 6</li>
-                <li class="list-group-item">Item 7</li>
-                <li class="list-group-item">Item 8</li>
+                <li class="list-group-item"></li>
             </ul>
             </div>
             <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-pink" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-lime accent-4 text-dark">Realizar Pedido</button>
             </div>
             </div>
         </div>
