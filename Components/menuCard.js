@@ -19,12 +19,14 @@ Vue.component('menu-card',{
             <!-- Text -->
             <p class="card-text white-text">{{item.descripcion}}
             </p>
-            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-            <button type="button " class="btn btn-red btn-sm btn-circle"  @click= restar ><i class="fas fa-minus"></i></button>
-            <span class="text-center">Cantidad: {{cantidad}}</span>   
-            <button type="button" class="btn btn-green btn-sm btn-circle " @click= sumar ><i class="fas fa-plus"></i></button>
-            <span class="text-center ml-5">Total: $ {{total}}</span>
-           
+            <div class="row">
+                <div class="col-12">
+                    <button type="button " class="btn btn-red btn-sm btn-circle"  @click= restar ><i class="fas fa-minus"></i></button>
+                    <span class="text-center">{{cantidad}}</span>   
+                    <button type="button" class="btn btn-green btn-sm btn-circle " @click= sumar ><i class="fas fa-plus"></i></button>
+                    <span class="text-center ml-3">Total: $ {{total}}</span>
+                </div>
+            </div>
         </div>
     </div>
     </div>
