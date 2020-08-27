@@ -34,7 +34,6 @@ const store = new Vuex.Store({
             state.cantidadItemSeleccionado.clear();
             menu.$forceUpdate();
         },
-        
     },
 });
 

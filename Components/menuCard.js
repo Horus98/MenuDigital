@@ -22,8 +22,8 @@ Vue.component('menu-card',{
                 <div class="row">
                     <div class="col-12">
                         <button type="button " class="btn btn-red btn-sm btn-circle"  @click= restar(item) ><i class="fas fa-minus"></i></button>
-                        <span class="text-center" v-if="$store.state.cantidadItemSeleccionado.get(item.id) != undefined ">{{$store.state.cantidadItemSeleccionado.get(item.id)}}</span>  
-                        <span class="text-center" v-else>0</span>    
+                        <span class="text-center" v-if="$store.state.cantidadItemSeleccionado.get(item.id) != undefined ">{{cantidadItem(item)}}</span>  
+                        <span class="text-center" v-else>0 </span>    
                         <button type="button" class="btn btn-green btn-sm btn-circle " @click= sumar(item) ><i class="fas fa-plus"></i></button>
                         <span class="text-center ml-3">Total: $ {{total}}</span>
                     </div>
@@ -44,14 +44,19 @@ Vue.component('menu-card',{
     methods: {
         restar(item){
             if(store.state.cantidadItemSeleccionado != undefined && this.total != 0){
+                let cantidad = store.state.cantidadItemSeleccionado.get(item.id) - 1;
                 store.commit('quitar',item)
-                this.total -= item.precio;  
+                this.total = this.precio * cantidad ;  
             }
         },
         sumar(item) {
             store.commit('agregar',item);
-            this.total += item.precio;  
-        } 
-    }
+            let cantidad = store.state.cantidadItemSeleccionado.get(item.id);
+            this.total = this.precio * cantidad ;  
+        } ,
+        cantidadItem(item){
+            return store.state.cantidadItemSeleccionado.get(item.id);
+        }
+    },
 });
 

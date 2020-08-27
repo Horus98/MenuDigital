@@ -25,10 +25,10 @@ Vue.component('modal-carrito', {
                         <img :src= "item.imagen" alt="imagen item" height="60px" width="60px" style=" object-fit: cover;">
                         <span class="subFont ml-3 justify-content-center ">{{item.nombre}} 
                             <span class="small-font">
-                                <button type="button" @click = "$store.commit('quitar',item)" class="btn btn-red btn-sm btn-circle mb-3" ><i class="fas fa-minus"></i></button> 
+                                <button type="button" @click = "restar(item)" class="btn btn-pink btn-sm btn-circle mb-3" ><i class="fas fa-minus"></i></button> 
                                 {{cantidad(item.id)}}
-                                <button type="button " @click = "$store.commit('agregar',item)" class="btn btn-lime btn-sm btn-circle mb-3"><i class="fas fa-plus"></i></button>
-                                $2500</span>
+                                <button type="button " @click = "sumar(item)" class="btn btn-lime btn-sm btn-circle mb-3"><i class="fas fa-plus"></i></button>
+                                {{price(item)}}</span>
                         </span>
                     </div>
                 </li>
@@ -51,7 +51,22 @@ Vue.component('modal-carrito', {
     methods:{
         cantidad(id){
             return this.items.get(id);
+        },
+        price(item){
+            let precio = this.cantidad(item.id) * item.precio; 
+            precio = new Intl.NumberFormat("de-DE").format(precio);
+            console.log(precio);
+            return "$" + precio;
+        },
+        sumar(item){
+            store.commit('agregar',item);
+            this.$forceUpdate();
+        },
+        restar(item){
+            let cantidad = this.cantidad(item.id);
+            if(cantidad > 0)
+                store.commit('quitar',item);
+            this.$forceUpdate();
         }
-    },
-    
+    }, 
 });

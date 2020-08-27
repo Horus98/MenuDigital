@@ -83,12 +83,5 @@ const menu = new Vue({
         quitarItem(item) {
             store.commit('quitar', item);
         },
-        buscar() {
-            let mapeo = store.state.cantidadItemSeleccionado;
-            console.log(store.state.itemsSeleccionados);
-            console.log(mapeo.get(1));
-
-        }
-
     }
 });
