@@ -20,10 +20,16 @@ Vue.component('modal-carrito', {
             </div>
             <div class="modal-body">
             <ul class="list-group">
-                <li v-for= "item of $store.state.itemsSeleccionados" class="list-group-item">
+                <li v-for= "item of $store.state.itemsSeleccionados" :key= "item.id" class="list-group-item">
                     <div>
                         <img :src= "item.imagen" alt="imagen item" height="60px" width="60px" style=" object-fit: cover;">
-                        <span class="subFont ml-3 justify-content-center">{{item.nombre}}</span>
+                        <span class="subFont ml-3 justify-content-center ">{{item.nombre}} 
+                            <span class="small-font">
+                                <button type="button" @click = "$store.commit('quitar',item)" class="btn btn-red btn-sm btn-circle mb-3" ><i class="fas fa-minus"></i></button> 
+                                {{cantidad(item.id)}}
+                                <button type="button " @click = "$store.commit('agregar',item)" class="btn btn-lime btn-sm btn-circle mb-3"><i class="fas fa-plus"></i></button>
+                                $2500</span>
+                        </span>
                     </div>
                 </li>
             </ul>
@@ -36,5 +42,16 @@ Vue.component('modal-carrito', {
         </div>
         </div>
         </div>
-    `
+    `,
+    data(){
+        return{
+          items: store.state.cantidadItemSeleccionado,
+        }
+    },
+    methods:{
+        cantidad(id){
+            return this.items.get(id);
+        }
+    },
+    
 });

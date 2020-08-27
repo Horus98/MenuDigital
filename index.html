@@ -19,7 +19,8 @@
 <body>
     <div id="menu">
         <nav-bar></nav-bar>
-        <br><br><br> 
+        <br><br><br>
+        <button type="button" @click= "buscar" class="btn btn-pink btn-md ml-5" >Click</button>
         <div class="container mt-5 ">
             <div data-spy="scroll" data-target="#navbar-example2" class="scrollspy-example" data-offset="0">
                 <about></about>
@@ -30,12 +31,14 @@
                     <h4 class="text-danger mt-5 subFont">Cervezas</h4>
                     <hr style="background-color:rgb(56, 55, 55); height: 1px;">
                     <div class="row">
-                        <menu-card v-for="item of cervezas" v-on:agregar="agregarItem($event,$event)" v-on:restar="quitarItem($event,$event)" :item="item" v-bind:key="item.id"></menu-card>
+                        <menu-card v-for="item of cervezas" v-on:agregar="agregarItem($event,$event)"
+                            v-on:restar="quitarItem($event,$event)" :item="item" v-bind:key="item.id"></menu-card>
                     </div>
                 </section>
             </div>
+            <modal-carrito></modal-carrito>
         </div>
-        <modal-carrito></modal-carrito>
+    </div>
 </body>
 
 <!-- JQuery -->
@@ -56,4 +59,3 @@
 <script src="Components/menuCard.js"></script>
 <script src="Components/ModalCarrito.js"></script>
 <script src="menu.js"></script>
-

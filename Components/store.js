@@ -2,7 +2,6 @@ const store = new Vuex.Store({
     state: {
         cantidadItemSeleccionado: new Map(),
         itemsSeleccionados: new Array(),
-
     },
     mutations: {
         agregar(state, item) {
@@ -33,8 +32,10 @@ const store = new Vuex.Store({
         clear(state){
             state.itemsSeleccionados = [];
             state.cantidadItemSeleccionado.clear();
-        }
-    }
+            menu.$forceUpdate();
+        },
+        
+    },
 });
 
 

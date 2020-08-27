@@ -1,4 +1,4 @@
-Vue.component('about',{
+Vue.component('about', {
     template: `
     <section id="home">
                     <h2 class="text-center heading-font" id="presentacion">UNA <span class="text-danger">CALIDA</span>
