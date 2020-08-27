@@ -2,7 +2,12 @@ Vue.component('nav-bar',{
     template: `
     <nav id="navbar-example2" class="navbar fixed-top navbar-expand-lg navbar-dark elegant-color">
     <a class="navbar-brand" href="#">Mulaika</a>
-    <a class="navbar-brand"  href="" data-toggle="modal" data-target="#fullHeightModalRight"><i class="fas fa-shopping-cart"></i> <span class='badge badge-warning' id='lblCartCount'> ! </span></a>
+    <a class="navbar-brand"  href="" data-toggle="modal" data-target="#fullHeightModalRight">
+        <i class="fas fa-shopping-cart"></i> 
+        <transition name="fade">
+            <span v-if="$store.state.itemsSeleccionados.length > 0" class='badge badge-warning' id='lblCartCount'> {{$store.state.itemsSeleccionados.length}} </span>
+        </transition> 
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

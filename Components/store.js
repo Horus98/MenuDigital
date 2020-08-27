@@ -1,7 +1,8 @@
 const store = new Vuex.Store({
     state: {
         cantidadItemSeleccionado: new Map(),
-        itemsSeleccionados: new Set(),
+        itemsSeleccionados: new Array(),
+
     },
     mutations: {
         agregar(state, item) {
@@ -11,7 +12,7 @@ const store = new Vuex.Store({
                 state.cantidadItemSeleccionado.set(key, value);
             else {
                 state.cantidadItemSeleccionado.set(key, 1);
-                state.itemsSeleccionados.add(item);
+                state.itemsSeleccionados.push(item);
             }
         },
         quitar(state, item) {
@@ -20,10 +21,16 @@ const store = new Vuex.Store({
                 let value = state.cantidadItemSeleccionado.get(key) - 1;
                 if (value <= 0) {
                     state.cantidadItemSeleccionado.delete(key);
-                    state.itemsSeleccionados.delete(item);
+                    const index = state.itemsSeleccionados.indexOf(item);
+                    if (index > -1) {
+                        state.itemsSeleccionados.splice(index, 1);
+                      }
+                    
                 } else
                     state.cantidadItemSeleccionado.set(key, value);
             }
         }
     }
 });
+
+

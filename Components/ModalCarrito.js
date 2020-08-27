@@ -20,7 +20,12 @@ Vue.component('modal-carrito', {
             </div>
             <div class="modal-body">
             <ul class="list-group">
-                <li class="list-group-item"></li>
+                <li v-for= "item of $store.state.itemsSeleccionados" class="list-group-item">
+                    <div>
+                        <img :src= "item.imagen" alt="imagen item" height="60px" width="60px" style=" object-fit: cover;">
+                        <span class="subFont ml-3 justify-content-center">{{item.nombre}}</span>
+                    </div>
+                </li>
             </ul>
             </div>
             <div class="modal-footer justify-content-center">
