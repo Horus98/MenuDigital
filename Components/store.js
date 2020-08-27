@@ -29,6 +29,10 @@ const store = new Vuex.Store({
                 } else
                     state.cantidadItemSeleccionado.set(key, value);
             }
+        },
+        clear(state){
+            state.itemsSeleccionados = [];
+            state.cantidadItemSeleccionado.clear();
         }
     }
 });

@@ -14,8 +14,8 @@ Vue.component('modal-carrito', {
             <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title w-100" id="myModalLabel">Sus pedidos</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <button type="button" @click=" $store.commit('clear'); " class="btn btn-outline-pink  wave-effect" >
+                    <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
                 </button>
             </div>
             <div class="modal-body">
@@ -29,8 +29,8 @@ Vue.component('modal-carrito', {
             </ul>
             </div>
             <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-pink" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-lime accent-4 text-dark">Realizar Pedido</button>
+                <button type="button" class="btn btn-pink btn-md" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-lime accent-4 text-dark btn-md">Realizar Pedido</button>
             </div>
             </div>
         </div>

@@ -1,85 +1,101 @@
-    
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800);
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-@import url(https://fonts.googleapis.com/css?family=Bree+Serif);
-@import url(https://fonts.googleapis.com/css?family=Covered+By+Your+Grace);
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800);
+    @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+    @import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+    @import url(https://fonts.googleapis.com/css?family=Covered+By+Your+Grace);
 
 
 
 
-.heading-font {
-    font-family: 'Bree Serif', "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform: none;
-    font-size: 45px;
-}
+    .heading-font {
+        font-family: 'Bree Serif', "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-transform: none;
+        font-size: 45px;
+    }
 
-.secondary-font {
-    font-family: 'Covered By Your Grace', "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform: none;
-}
+    .secondary-font {
+        font-family: 'Covered By Your Grace', "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-transform: none;
+    }
 
-.subFont {
-    font-family: 'Bree Serif', "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform: none;
-    font-size: 30px;
-}
-
-       
-        .xyz { 
-            background-size: auto; 
-            text-align: center; 
-            padding-top: 100px; 
-        } 
-        .btn-circle.btn-sm { 
-            width: 30px; 
-            height: 30px; 
-            padding: 6px 0px; 
-            border-radius: 15px; 
-            font-size: 8px; 
-            text-align: center; 
-        } 
-        .btn-circle.btn-md { 
-            width: 50px; 
-            height: 50px; 
-            padding: 7px 10px; 
-            border-radius: 25px; 
-            font-size: 10px; 
-            text-align: center; 
-        } 
-        .btn-circle.btn-xl { 
-            width: 70px; 
-            height: 70px; 
-            padding: 10px 16px; 
-            border-radius: 35px; 
-            font-size: 12px; 
-            text-align: center; 
-        } 
-
-        .badge {
-            padding-left: 9px;
-            padding-right: 9px;
-            -webkit-border-radius: 9px;
-            -moz-border-radius: 9px;
-            border-radius: 9px;
-          }
-          
-          .label-warning[href],
-          .badge-warning[href] {
-            background-color: #ff0000;
-          }
-          #lblCartCount {
-              font-size: 12px;
-              background: #ff0000;
-              color: #fff;
-              padding: 0 5px;
-              vertical-align: top;
-              margin-left: -10px; 
-          }
+    .subFont {
+        font-family: 'Bree Serif', "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-transform: none;
+        font-size: 30px;
+    }
 
 
-          .fade-enter-active, .fade-leave-active {
-            transition: opacity .8s;
-          }
-          .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-            opacity: 0;
-          }
+    .xyz {
+        background-size: auto;
+        text-align: center;
+        padding-top: 100px;
+    }
+
+    .btn-circle.btn-sm {
+        width: 30px;
+        height: 30px;
+        padding: 6px 0px;
+        border-radius: 15px;
+        font-size: 8px;
+        text-align: center;
+    }
+
+    .btn-circle.btn-md {
+        width: 50px;
+        height: 50px;
+        padding: 7px 10px;
+        border-radius: 25px;
+        font-size: 10px;
+        text-align: center;
+    }
+
+    .btn-circle.btn-xl {
+        width: 70px;
+        height: 70px;
+        padding: 10px 16px;
+        border-radius: 35px;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .badge {
+        padding-left: 9px;
+        padding-right: 9px;
+        -webkit-border-radius: 9px;
+        -moz-border-radius: 9px;
+        border-radius: 9px;
+    }
+
+    .label-warning[href],
+    .badge-warning[href] {
+        background-color: #ff0000;
+    }
+
+    #lblCartCount {
+        font-size: 12px;
+        background: #ff0000;
+        color: #fff;
+        padding: 0 5px;
+        vertical-align: top;
+        margin-left: -10px;
+    }
+
+
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity .8s;
+    }
+
+    .fade-enter,
+    .fade-leave-to
+
+    /* .fade-leave-active below version 2.1.8 */
+        {
+        opacity: 0;
+    }
+
+    .btn-xs {
+        padding: .25rem .4rem;
+        font-size: .875rem;
+        line-height: .2rem;
+        border-radius: .2rem;
+    }
