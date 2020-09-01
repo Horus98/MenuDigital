@@ -14,7 +14,7 @@ const store = new Vuex.Store({
                 state.cantidadItemSeleccionado.set(key, 1);
                 state.itemsSeleccionados.push(item);
             }
-            this.refreshItems()        
+            store.commit('refreshItems', 'state')         
         },
         quitar(state, item) {
             let key = item.id;
@@ -30,13 +30,14 @@ const store = new Vuex.Store({
                 } else
                     state.cantidadItemSeleccionado.set(key, value);
             }
-            this.refreshItems()        },
+            store.commit('refreshItems', 'state')    
+        },
         clear(state){
             state.itemsSeleccionados = [];
             state.cantidadItemSeleccionado.clear();
-            this.refreshItems()
+            store.commit('refreshItems', 'state') 
         },
-        refreshItems(){
+        refreshItems(state){
             state.cantidadItemSeleccionado = new Map(state.cantidadItemSeleccionado)
         }
     },
