@@ -50,23 +50,20 @@ Vue.component('modal-carrito', {
     },
     methods:{
         cantidad(id){
-            return this.items.get(id);
+            return store.state.cantidadItemSeleccionado.get(id);
         },
         price(item){
             let precio = this.cantidad(item.id) * item.precio; 
             precio = new Intl.NumberFormat("de-DE").format(precio);
-            console.log(precio);
             return "$" + precio;
         },
         sumar(item){
             store.commit('agregar',item);
-            this.$forceUpdate();
         },
         restar(item){
             let cantidad = this.cantidad(item.id);
             if(cantidad > 0)
                 store.commit('quitar',item);
-            this.$forceUpdate();
         }
     }, 
 });

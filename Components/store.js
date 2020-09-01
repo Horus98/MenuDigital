@@ -7,12 +7,14 @@ const store = new Vuex.Store({
         agregar(state, item) {
             let key = item.id;
             let value = state.cantidadItemSeleccionado.get(key) + 1;
-            if (state.cantidadItemSeleccionado.has(key))
+            if (state.cantidadItemSeleccionado.has(key)){
                 state.cantidadItemSeleccionado.set(key, value);
+            }
             else {
                 state.cantidadItemSeleccionado.set(key, 1);
                 state.itemsSeleccionados.push(item);
             }
+            this.refreshItems()        
         },
         quitar(state, item) {
             let key = item.id;
@@ -28,12 +30,15 @@ const store = new Vuex.Store({
                 } else
                     state.cantidadItemSeleccionado.set(key, value);
             }
-        },
+            this.refreshItems()        },
         clear(state){
             state.itemsSeleccionados = [];
             state.cantidadItemSeleccionado.clear();
-            menu.$forceUpdate();
+            this.refreshItems()
         },
+        refreshItems(){
+            state.cantidadItemSeleccionado = new Map(state.cantidadItemSeleccionado)
+        }
     },
 });
 
