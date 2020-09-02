@@ -14,7 +14,7 @@ Vue.component('modal-carrito', {
             <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title w-100" id="myModalLabel">Sus pedidos</h4>
-                <button type="button" @click="clear(); " class="btn btn-outline-pink  wave-effect" >
+                <button type="button" data-toggle="modal" data-target="#modalConfirmDelete" class="btn btn-outline-pink  wave-effect" >
                     <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
                 </button>
             </div>
@@ -58,9 +58,7 @@ Vue.component('modal-carrito', {
     },
     methods: {
         clear(){
-            let confirmed = confirm("Esta seguro que desea vaciar el carrito?");
-            if(confirmed)
-                store.commit('clear')
+                
         },
         cantidad(id) {
             return store.state.cantidadItemSeleccionado.get(id);
