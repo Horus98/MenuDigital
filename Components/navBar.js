@@ -21,7 +21,7 @@ Vue.component('nav-bar',{
                     <a class="nav-link" href="#carta">Menú</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#">Ver Pedido</a>
+                    <a class="nav-link "href="" data-toggle="modal" data-target="#fullHeightModalRight">Ver Pedido</a>
                 </li>
                 <!-- Dropdown -->
                 <li class="nav-item dropdown">

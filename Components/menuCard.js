@@ -5,8 +5,9 @@ Vue.component('menu-card',{
         <div class="card mt-3" >
             <!-- Card image -->
             <div class="view overlay">
+            <!-- Falta la imagen, cuando se tenga la informacion en la API, cambiar a item.image -->
                 <img class="card-img-bottom img-fluid"
-                    :src= item.imagen
+                    src= "https://images.crateandbarrel.com/is/image/Crate/SpiegelauIPAGlass18ozSHS16"
                     alt="Card image cap" >
                 <a href="#!">
                     <div class="mask rgba-white-slight"></div>
@@ -15,15 +16,16 @@ Vue.component('menu-card',{
             <!-- Card content -->
             <div class="card-body elegant-color white-text rounded-bottom">
                 <!-- Title -->
-                <h4 class="card-title">{{item.nombre}} $ {{new Intl.NumberFormat("de-DE").format(item.precio)}}</h4>
+                <h4 class="card-title">{{item.name}} $ {{new Intl.NumberFormat("de-DE").format(item.price)}}</h4>
                 <!-- Text -->
-                <p class="card-text white-text">{{item.descripcion}}
+                <p class="card-text white-text">Aca iría una descripción 
                 </p>
                 <div class="row">
                     <div class="col-12">
-                        <button type="button " class="btn btn-red btn-sm btn-circle"  @click= restar(item) ><i class="fas fa-minus"></i></button>
+                        <button type="button " v-if = "cantidad == 0" class="btn btn-pink btn-sm btn-circle disabled"  @click= restar(item) ><i class="fas fa-minus"></i></button>
+                        <button type="button " v-else class="btn btn-pink btn-sm btn-circle"  @click= restar(item) ><i class="fas fa-minus"></i></button>
                         <span class="text-center">{{cantidad}}</span>  
-                        <button type="button" class="btn btn-green btn-sm btn-circle " @click= sumar(item) ><i class="fas fa-plus"></i></button>
+                        <button type="button" class="btn btn-lime accent-4 btn-sm btn-circle " @click= sumar(item) ><i class="fas fa-plus"></i></button>
                         <span class="text-center ml-3">Total: $ {{total}}</span>
                     </div>
                 </div>
@@ -36,7 +38,7 @@ Vue.component('menu-card',{
     data(){
       return{
         cantidad: 0,
-        precio: this.item.precio,  
+        precio: this.item.price,  
       }
     },
     computed:{
