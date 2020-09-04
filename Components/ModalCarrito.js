@@ -21,17 +21,17 @@ Vue.component('modal-carrito', {
             <div class="modal-body">
             <ul class="list-group">
                 <li v-for= "item of $store.state.itemsSeleccionados" :key= "item.id" class="list-group-item">
-                    <div>
+                    
                     <!-- Falta la imagen, cuando se tenga la informacion en la API, cambiar a item.image -->
                         <img src= "https://images.crateandbarrel.com/is/image/Crate/SpiegelauIPAGlass18ozSHS16" alt="imagen item" height="60px" width="60px" style=" object-fit: cover;">
-                        <span class="subFont ml-3 justify-content-center ">{{item.nombre}} 
+                        <span class="subFont ml-3 justify-content-center ">{{item.name}} 
                             <span class="small-font">
                                 <button type="button" @click = "restar(item)" class="btn btn-pink btn-sm btn-circle mb-3" ><i class="fas fa-minus"></i></button> 
                                 {{cantidad(item.id)}}
                                 <button type="button " @click = "sumar(item)" class="btn btn-lime btn-sm btn-circle mb-3"><i class="fas fa-plus"></i></button>
                                 {{price(item)}}</span>
                         </span>
-                    </div>
+                    
                 </li>
                 <li class = "list-group-item">
                     <div class="md-form">
@@ -43,7 +43,7 @@ Vue.component('modal-carrito', {
             </div>
             <div class="modal-footer justify-content-center">
                 <button type="button" class="btn btn-pink btn-md" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-lime accent-4 text-dark btn-md">Realizar Pedido</button>
+                <button type="button" class="btn btn-lime accent-4 text-dark btn-md" data-dismiss="modal" @click="buildOrder()" >Realizar Pedido</button>
             </div>
             </div>
         </div>
@@ -58,7 +58,7 @@ Vue.component('modal-carrito', {
     },
     methods: {
         clear(){
-                
+            store.commit('clear')    
         },
         cantidad(id) {
             return store.state.cantidadItemSeleccionado.get(id);
@@ -75,6 +75,34 @@ Vue.component('modal-carrito', {
             let cantidad = this.cantidad(item.id);
             if (cantidad > 0)
                 store.commit('quitar', item);
+        },
+        buildOrder(){
+            let order = {
+                "table" : 1,
+                "items" :  Array.from( store.state.cantidadItemSeleccionado.keys()),
+                "quantities" : Array.from( store.state.cantidadItemSeleccionado.values())
+            };
+       
+            console.log(order);
+            axios.post('http://127.0.0.1:8000/api/orders/', order,{
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }}
+            )
+            .then(response => {
+                if(response.status === 200){
+                    this.notify();
+                    this.clear();
+                };
+            }).catch(e => {
+                console.log(e);
+            }); 
+        },
+        notify(){
+            swal("Tu pedido ha sido enviado!", "Momento de esperar!", "success",{
+                timer : 3000
+            });
         }
+
     },
 });

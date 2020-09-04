@@ -192,3 +192,11 @@
         }
         }
         }
+
+        .swal-button {
+            background-color: #FA8072;       
+          }
+        
+        .swal-button:focus{
+            background-color: #CD5C5C;
+        }
