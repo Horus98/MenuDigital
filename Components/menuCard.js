@@ -7,7 +7,7 @@ Vue.component('menu-card',{
             <div class="view overlay">
             <!-- Falta la imagen, cuando se tenga la informacion en la API, cambiar a item.image -->
                 <img class="card-img-bottom img-fluid"
-                    src= "https://images.crateandbarrel.com/is/image/Crate/SpiegelauIPAGlass18ozSHS16"
+                    :src= item.image
                     alt="Card image cap" >
                 <a href="#!">
                     <div class="mask rgba-white-slight"></div>
@@ -18,7 +18,7 @@ Vue.component('menu-card',{
                 <!-- Title -->
                 <h4 class="card-title">{{item.name}} $ {{new Intl.NumberFormat("de-DE").format(item.price)}}</h4>
                 <!-- Text -->
-                <p class="card-text white-text">Aca iría una descripción 
+                <p class="card-text white-text">{{item.description}}
                 </p>
                 <div class="row">
                     <div class="col-12">

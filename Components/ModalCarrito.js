@@ -35,7 +35,7 @@ Vue.component('modal-carrito', {
                 </li>
                 <li class = "list-group-item">
                     <div class="md-form">
-                        <textarea id="form7" class="md-textarea form-control" rows="2"></textarea>
+                        <textarea id="form7" v-model = "observations" class="md-textarea form-control" rows="2"></textarea>
                         <label for="form7">Observaciones..</label>
                     </div>
                 </li>
@@ -53,12 +53,14 @@ Vue.component('modal-carrito', {
     data() {
         return {
             items: store.state.cantidadItemSeleccionado,
-            observations : "",
+            observations: "",
+            
         }
     },
     methods: {
-        clear(){
-            store.commit('clear')    
+        clear() {
+            this.observations = "";
+            store.commit('clear');
         },
         cantidad(id) {
             return store.state.cantidadItemSeleccionado.get(id);
@@ -76,33 +78,33 @@ Vue.component('modal-carrito', {
             if (cantidad > 0)
                 store.commit('quitar', item);
         },
-        buildOrder(){
+        buildOrder() {
             let order = {
-                "table" : 1,
-                "items" :  Array.from( store.state.cantidadItemSeleccionado.keys()),
-                "quantities" : Array.from( store.state.cantidadItemSeleccionado.values())
+                "table": 1,
+                "items": Array.from(store.state.cantidadItemSeleccionado.keys()),
+                "quantities": Array.from(store.state.cantidadItemSeleccionado.values())
             };
-       
+
             console.log(order);
-            axios.post('http://127.0.0.1:8000/api/orders/', order,{
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }}
-            )
-            .then(response => {
-                if(response.status === 200){
-                    this.notify();
-                    this.clear();
-                };
-            }).catch(e => {
-                console.log(e);
-            }); 
+            axios.post('http://127.0.0.1:8000/api/orders/', order, {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                })
+                .then(response => {
+                    if (response.status === 200) {
+                        this.notify();
+                        this.clear();
+                    };
+                }).catch(e => {
+                    console.log(e);
+                });
         },
-        notify(){
-            swal("Tu pedido ha sido enviado!", "Momento de esperar!", "success",{
-                timer : 3000
+        notify() {
+            swal("Tu pedido ha sido enviado!", "Momento de esperar!", "success", {
+                timer: 3000
             });
         }
-
     },
+    
 });
