@@ -135,9 +135,7 @@
         outline:none;
 
         }
-        .number-input button:hover{
-            background-color: rebeccapurple;
-        }
+      
         
         .number-input button:before,
         .number-input button:after {
