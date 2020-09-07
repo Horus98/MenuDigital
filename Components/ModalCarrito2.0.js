@@ -1,5 +1,6 @@
 Vue.component('modal-carrito-table',{
-    template:`
+    template: //html
+    ` 
     <div>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCart">Launch modal</button>
 
@@ -28,7 +29,22 @@ Vue.component('modal-carrito-table',{
             </tr>
           </thead>
           <tbody>
-          
+            <tr>
+              <th scope="row"><img src="https://www.cis-spareparts.com/media/wysiwyg/birra.jpg" width="60px" height="60px" style="object-fit:scale-down;"></th>
+              <td>IPA</td>
+              <td>$125.00</td>
+              <td>
+                <div>
+                    <div class="def-number-input number-input safari_only mb-0 w-100">
+                      <button  
+                        class="minus" @click = ""></button>
+                      <input class="quantity" min="0" name="quantity" :value= 10 type="number" disabled>
+                      <button 
+                        class="plus" @click = ""></button>
+                    </div>
+                  </div>
+              </td>
+            </tr>
             <tr v-for= "item of $store.state.itemsSeleccionados" >
               <th scope="row"><img :src= item.image width="40px"></th>
               <td>{{item.name}}</td>
