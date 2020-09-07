@@ -20,17 +20,8 @@ Vue.component('modal-carrito-table',{
       <div class="modal-body">
 
         <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Imagen</th>
-              <th>Nombre</th>
-              <th>Precio</th>
-              <th class="text-center">Cantidad</th>
-            </tr>
-          </thead>
           <tbody>
             <tr>
-              <th scope="row"><img src="https://www.cis-spareparts.com/media/wysiwyg/birra.jpg" width="60px" height="60px" style="object-fit:scale-down;"></th>
               <td>IPA</td>
               <td>$125.00</td>
               <td>
@@ -46,12 +37,11 @@ Vue.component('modal-carrito-table',{
               </td>
             </tr>
             <tr v-for= "item of $store.state.itemsSeleccionados" >
-              <th scope="row"><img :src= item.image width="40px"></th>
               <td>{{item.name}}</td>
               <td>{{price(item)}}</td>
               <td>
                 <div>
-                    <div class="def-number-input number-input safari_only mb-0 w-100">
+                    <div class="def-number-input number-input safari_only mb-0 w-80">
                       <button  
                         class="minus" @click = "restar(item)"></button>
                       <input class="quantity" min="0" name="quantity" :value= cantidad(item.id) type="number" disabled>
@@ -68,8 +58,8 @@ Vue.component('modal-carrito-table',{
       </div>
       <!--Footer-->
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
-        <button class="btn btn-primary" @click="buildOrder()" >Checkout</button>
+        <button type="button" class="btn btn-outline-primary btn-md" data-dismiss="modal">Close</button>
+        <button class="btn btn-primary btn-md" @click="buildOrder()" >Checkout</button>
       </div>
     </div>
   </div>
