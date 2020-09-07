@@ -22,6 +22,7 @@ Vue.component('menu-card',{
                 </p>
                 <div class="row">
                     <div class="col-12">
+                    
                         <button type="button " v-if = "cantidad == 0" class="btn btn-pink btn-sm btn-circle disabled"  @click= restar(item) ><i class="fas fa-minus"></i></button>
                         <button type="button " v-else class="btn btn-pink btn-sm btn-circle"  @click= restar(item) ><i class="fas fa-minus"></i></button>
                         <span class="text-center">{{cantidad}}</span>  
