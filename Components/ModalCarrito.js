@@ -82,7 +82,8 @@ Vue.component('modal-carrito', {
             let order = {
                 "table": 1,
                 "items": Array.from(store.state.cantidadItemSeleccionado.keys()),
-                "quantities": Array.from(store.state.cantidadItemSeleccionado.values())
+                "quantities": Array.from(store.state.cantidadItemSeleccionado.values()),
+                "comments" : this.observations,
             };
 
             console.log(order);

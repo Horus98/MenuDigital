@@ -1,6 +1,5 @@
-Vue.component('modal-carrito-table',{
-template: //html
-`
+Vue.component('modal-carrito-table', {
+  template: `
 <div>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCart">Launch modal</button>
 
@@ -80,61 +79,62 @@ template: //html
 <!-- Modal: modalCart -->
 </div>
 `,
-data() {
-return {
-items: store.state.cantidadItemSeleccionado,
-observations: "",
+  data() {
+    return {
+      items: store.state.cantidadItemSeleccionado,
+      observations: "",
 
-}
-},
-methods: {
-clear() {
-this.observations = "";
-store.commit('clear');
-},
-cantidad(id) {
-return store.state.cantidadItemSeleccionado.get(id);
-},
-price(item) {
-let precio = this.cantidad(item.id) * item.price;
-precio = new Intl.NumberFormat("de-DE").format(precio);
-return "$" + precio;
-},
-sumar(item) {
-store.commit('agregar', item);
-},
-restar(item) {
-let cantidad = this.cantidad(item.id);
-if (cantidad > 0)
-store.commit('quitar', item);
-},
-buildOrder() {
-let order = {
-"table": 1,
-"items": Array.from(store.state.cantidadItemSeleccionado.keys()),
-"quantities": Array.from(store.state.cantidadItemSeleccionado.values())
-};
+    }
+  },
+  methods: {
+    clear() {
+      this.observations = "";
+      store.commit('clear');
+    },
+    cantidad(id) {
+      return store.state.cantidadItemSeleccionado.get(id);
+    },
+    price(item) {
+      let precio = this.cantidad(item.id) * item.price;
+      precio = new Intl.NumberFormat("de-DE").format(precio);
+      return "$" + precio;
+    },
+    sumar(item) {
+      store.commit('agregar', item);
+    },
+    restar(item) {
+      let cantidad = this.cantidad(item.id);
+      if (cantidad > 0)
+        store.commit('quitar', item);
+    },
+    buildOrder() {
+      let order = {
+        "table": 1,
+        "items": Array.from(store.state.cantidadItemSeleccionado.keys()),
+        "quantities": Array.from(store.state.cantidadItemSeleccionado.values()),
+        "comments" : this.observations,
+      };
 
-console.log(order);
-axios.post('http://127.0.0.1:8000/api/orders/', order, {
-headers: {
-'Content-Type': 'application/x-www-form-urlencoded'
-}
-})
-.then(response => {
-if (response.status === 200) {
-this.notify();
-this.clear();
-};
-}).catch(e => {
-console.log(e);
-});
-},
-notify() {
-swal("Tu pedido ha sido enviado!", "Momento de esperar!", "success", {
-timer: 3000
-});
-}
-},
+      console.log(order);
+      axios.post('http://127.0.0.1:8000/api/orders/', order, {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        })
+        .then(response => {
+          if (response.status === 200) {
+            this.notify();
+            this.clear();
+          };
+        }).catch(e => {
+          console.log(e);
+        });
+    },
+    notify() {
+      swal("Tu pedido ha sido enviado!", "Momento de esperar!", "success", {
+        timer: 3000
+      });
+    }
+  },
 
 });
