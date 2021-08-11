@@ -13,6 +13,9 @@
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 
 
     <link rel="stylesheet" href="style.css">
@@ -22,29 +25,74 @@
 <body>
     <div id="menu">
         <nav-bar></nav-bar>
-        <br><br><br>
-        <div class="container mt-5 ">
-            <div data-spy="scroll" data-target="#navbar-example2" class="scrollspy-example" data-offset="0">
-                <about></about>
-                <br><br>
-                <section>
-                    <hr style="background-color:rgb(56, 55, 55); height: 5px;">
-                    <h2 class="text-center mt-5 subFont" id="carta">Aqui encontrará toda nuestra carta</h2>
-                    <h4 class="text-danger mt-5 subFont">Cervezas</h4>
-                    <hr style="background-color:rgb(56, 55, 55); height: 1px;">
-                    <div class="row">
-                        <menu-card v-for="item of cervezas" v-on:agregar="agregarItem($event,$event)"
-                            v-on:restar="quitarItem($event,$event)" :item="item" v-bind:key="item.id"></menu-card>
-                    </div>
-                </section>
+
+
+        <div id="intro" class="bg-image shadow-2-strong ">
+
+            <div class="container d-flex align-items-center justify-content-center text-center h-100">
+                <div class="text-white">
+                    <about></about>
+
+                </div>
             </div>
-            <modal-carrito></modal-carrito>
-            <modal-confirm></modal-confirm>
-             <modal-carrito-table></modal-carrito-table>
-         </div>
 
-        <!-- Button trigger modal-->
+        </div>
 
+        <div class="container mt-5 "></div>
+        <div data-spy="scroll" data-target="#navbar-example2" class="scrollspy-example" data-offset="0">
+
+
+        </div>
+        <div id="comienzo-menu"></div>
+        <br><br>
+        <section>
+            <hr style="background-color:rgb(56, 55, 55); height: 5px;">
+            <h2 class="text-center mt-5 subFont" id="carta">Aqui encontrará toda nuestra carta</h2>
+            <h4 class="text-danger mt-5 subFont ml-2">Cervezas</h4>
+            <hr style="background-color:rgb(56, 55, 55); height: 1px;">
+            <div id="items-menu" class="bg-image shadow-2-strong ">
+               <!--  <div class="container d-flex align-items-center justify-content-center text-center h-100">
+                    <div class="text-white">
+                       <div class="row">
+                            <menu-card v-for="item of cervezas" v-on:agregar="agregarItem($event,$event)"
+                                v-on:restar="quitarItem($event,$event)" :item="item" v-bind:key="item.id"></menu-card>
+                        </div>
+                    </div>
+                </div>  -->
+                
+                <div class="list-group list-group-flush" >
+                    <li class="list-group-item  " aria-current="true" style="background-color: transparent;">
+                      <div class="d-flex w-100 justify-content-between">
+                        <p class="mb-1 text-white">Nombre del producto</p>
+                        <small class="text-white">$350 <div class="btn-group " role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-white btn-xs-amount " ><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn btn-outline-white  btn-xs-amount ">20</button>
+                            <button type="button" class="btn btn-white btn-xs-amount" ><i class="fas fa-plus"></i></button>
+                          </div> </small>
+                      </div>
+                      <small class="text-white">Descripcion del producto</small>
+                      <hr style="background-color:rgb(255, 255, 255); height: 1px;">
+                    </li>
+                     <li class="list-group-item  " aria-current="true" style="background-color: transparent;">
+                      <div class="d-flex w-100 justify-content-between">
+                        <p class="mb-1 text-white">Nombre del producto</p>
+                        <small class="text-white">$350 <div class="btn-group " role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-white btn-xs-amount " ><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn btn-outline-white  btn-xs-amount ">20</button>
+                            <button type="button" class="btn btn-white btn-xs-amount" ><i class="fas fa-plus"></i></button>
+                          </div> </small>
+                      </div>
+                      <small class="text-white">Descripcion del producto</small>
+                    </li>
+                  </div> 
+            </div>
+        </section>
+
+
+
+        <modal-carrito></modal-carrito>
+        <modal-confirm></modal-confirm>
+    </div>
     </div>
 </body>
 

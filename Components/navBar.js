@@ -1,7 +1,13 @@
 Vue.component('nav-bar',{
     template: `
-    <nav id="navbar-example2" class="navbar fixed-top navbar-expand-lg navbar-dark elegant-color">
-        <a class="navbar-brand" href="#">Mulaika</a>
+    <nav id="navbar-example2" class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+       
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#" style= "font-family: 'Roboto', sans-serif; font-family: 'Style Script', cursive; font-size: 22px;">Mulaika</a>
         <a class="navbar-brand"  href="" v-if = "$store.state.itemsSeleccionados.length > 0" data-toggle="modal" data-target="#fullHeightModalRight" >
             <i class="fas fa-shopping-cart"></i> 
             <transition name="fade">
@@ -14,11 +20,8 @@ Vue.component('nav-bar',{
                 <span v-if="$store.state.itemsSeleccionados.length > 0" class='badge badge-warning' id='lblCartCount' > {{$store.state.itemsSeleccionados.length}} </span>
             </transition> 
         </a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        
+        
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
@@ -42,6 +45,10 @@ Vue.component('nav-bar',{
             </ul>
         </div> 
     </nav>
+    
+    
+
     `,
    
 });
+

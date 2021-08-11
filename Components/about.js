@@ -21,9 +21,7 @@ Vue.component('about', {
                             <p> Email: Mulaika@Mulaika.com</p>
                         </div>
                     </div>
-                    <img class="img-fluid" alt="Responsive image"
-                        src="https://imagefinder.co/storage/w1000/images/2019/01/pixabay_drink-445311_960_720.jpg"
-                        height="500" width="1100">
+                    <a type="button" href="#comienzo-menu" class="btn btn-outline-light rounded-pill" data-mdb-ripple-color="light">VER MENU</a  >
                 </section>
     
     `

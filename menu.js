@@ -1,3 +1,10 @@
+let cervezasLocales = [{"id" : 1,"name" : "IPA", "description" : "Amarga", "price": 120},
+                {"id" : 2,"name" : "APA", "description" : "Amarga y muy lupulada","price": 120},
+                {"id" : 3,"name" : "BLACK IPA", "description" : "Amarga y oscura como la noche   ", "price": 130}
+            ]
+
+
+
 const menu = new Vue({
     el: '#menu',
     store,
@@ -14,12 +21,15 @@ const menu = new Vue({
             store.commit('quitar', item);
         },
         getBeerData() {
-            axios
+           /*  axios
                 .get('http://127.0.0.1:8000/api/items-stock/')
                 .then(response => {
                     this.cervezas = response['data'];
                 })
-                .catch(error => console.error());
+                .catch(error => console.error()); */
+                this.cervezas = cervezasLocales
+                console.log(cervezasLocales)
+
         },
     },
     mounted() {
@@ -27,3 +37,4 @@ const menu = new Vue({
     }
 
 });
+
