@@ -32,7 +32,7 @@
             <div class="container d-flex align-items-center justify-content-center text-center h-100">
                 <div class="text-white">
                     <about></about>
-
+                    <p>Usted se encuentra en la mesa {{mesa}} con token {{token}}</p>
                 </div>
             </div>
 
@@ -72,7 +72,7 @@
                 </div>
             </section>
         </div>
-        <modal-carrito-table></modal-carrito-table>
+        <modal-carrito-table :mesa="mesa" :token="token"></modal-carrito-table>
         <modal-confirm></modal-confirm>
     </div>
     </div>

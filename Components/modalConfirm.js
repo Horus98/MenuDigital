@@ -1,5 +1,5 @@
 Vue.component('modal-confirm',{
-template://html
+template:
 `
 <div>
     <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

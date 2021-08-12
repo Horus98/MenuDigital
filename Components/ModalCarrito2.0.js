@@ -79,6 +79,7 @@ Vue.component('modal-carrito-table', {
 <!-- Modal: modalCart -->
 </div>
 `,
+props : ['mesa',"token"],
   data() {
     return {
       items: store.state.cantidadItemSeleccionado,
@@ -109,11 +110,14 @@ Vue.component('modal-carrito-table', {
     },
     buildOrder() {
       let order = {
-        "table": 1,
+        "table": this.mesa,
         "items": Array.from(store.state.cantidadItemSeleccionado.keys()),
         "quantities": Array.from(store.state.cantidadItemSeleccionado.values()),
         "comments" : this.observations,
+        "token": this.token
       };
+
+    
 
       console.log(order);
       axios.post('http://127.0.0.1:8000/api/orders/', order, {

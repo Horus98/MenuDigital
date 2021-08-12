@@ -10,7 +10,9 @@ const menu = new Vue({
     store,
     data() {
         return {
-            cervezas: []
+            cervezas: [],
+            mesa: "",
+            token: ""
         }
     },
     methods: {
@@ -28,12 +30,21 @@ const menu = new Vue({
                 })
                 .catch(error => console.error()); */
                 this.cervezas = cervezasLocales
-                console.log(cervezasLocales)
-
+                console.log(this.cervezas)
+               
+                
+               
         },
+        getParametrosFromUrl(){
+            const valoresParametros = window.location.search;
+            const urlParams = new URLSearchParams(valoresParametros);
+            this.mesa = urlParams.get('mesa');
+            this.token = urlParams.get('token');
+        }
     },
     mounted() {
         this.getBeerData();
+        this.getParametrosFromUrl();
     }
 
 });
