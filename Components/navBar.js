@@ -8,7 +8,7 @@ Vue.component('nav-bar',{
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#" style= "font-family: 'Roboto', sans-serif; font-family: 'Style Script', cursive; font-size: 22px;">Mulaika</a>
-        <a class="navbar-brand"  href="" v-if = "$store.state.itemsSeleccionados.length > 0" data-toggle="modal" data-target="#fullHeightModalRight" >
+        <a class="navbar-brand"  href="" v-if = "$store.state.itemsSeleccionados.length > 0" data-toggle="modal" data-target="#modalCart" >
             <i class="fas fa-shopping-cart"></i> 
             <transition name="fade">
                 <span v-if="$store.state.itemsSeleccionados.length > 0" class='badge badge-warning' id='lblCartCount' > {{$store.state.itemsSeleccionados.length}} </span>
@@ -31,7 +31,7 @@ Vue.component('nav-bar',{
                     <a class="nav-link" href="#carta">Menú</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link "href="" data-toggle="modal" data-target="#fullHeightModalRight">Ver Pedido</a>
+                    <a class="nav-link "href="" data-toggle="modal" data-target="#modalCart">Ver Pedido</a>
                 </li>
                 <!-- Dropdown -->
                 <li class="nav-item dropdown">

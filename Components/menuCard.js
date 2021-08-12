@@ -3,8 +3,6 @@ Vue.component('menu-card',{
     <!-- Card -->
     <div class="card-group col-12 col-sm-12 col-md-6 col-lg-4"  >
         <div class="card mt-3" >
-          
-           
             <!-- Card content -->
             <div class="card-body elegant-color white-text rounded-bottom"  >
                 <!-- Title -->
