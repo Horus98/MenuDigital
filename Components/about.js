@@ -1,18 +1,16 @@
 Vue.component('about', {
     template: `
     <section id="home">
-                    <h2 class="text-center heading-font" id="presentacion">UNA <span class="text-danger">CALIDA</span>
-                        BIENVENIDA 
+                    <h2 class="text-center heading-font" id="presentacion"> <span class="text-danger">MULAIKA</span>
+                         
                     </h2>
                     <h5 class="text-center mt-5"> </h5>
 
                     <div class="row mt-5">
                         <div class="col-md-6 ">
-                            <h2 class="secondary-font">About <span class="text-danger">Mulaika</span></h2>
-                            <p>Somos un bar que tiene una larga historia, mucho para contar. </p>
-                            <p>Here he comes Here comes Speed Racer. He's a demon on wheels. Believe it or not I'm
-                                walking
-                                on air. I never thought I could feel so free. Flying away on a wing and a prayer.</p>
+                            <h2 class="secondary-font">About <span class="text-danger">US</span></h2>
+                            <p>Bienvenido a nuestro menú digital, mas abajo podra consultar la carta y ver todo lo que tenemos para ofrecer. </p>
+                           
                         </div>
                         <div class="col-md-6 ">
                             <h2 class="secondary-font">Informacion </h2>

@@ -1,7 +1,7 @@
 Vue.component('modal-carrito-table', {
   template: `
 <div>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCart">Launch modal</button>
+  
 
   <!-- Modal: modalCart -->
   <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
