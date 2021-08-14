@@ -3,7 +3,7 @@ let cervezasLocales = [{"id" : 1,"name" : "IPA", "description" : "Amarga", "pric
                 {"id" : 3,"name" : "BLACK IPA", "description" : "Amarga y oscura como la noche   ", "price": 130}
             ]
 
-
+const ITEMS_URL = 'http://127.0.0.1:8000/api/items-stock/'
 
 const menu = new Vue({
     el: '#menu',
@@ -24,7 +24,7 @@ const menu = new Vue({
         },
         getBeerData() {
            /*  axios
-                .get('http://127.0.0.1:8000/api/items-stock/')
+                .get(ITEMS_URL)
                 .then(response => {
                     this.cervezas = response['data'];
                 })
