@@ -1,3 +1,5 @@
+const SEND_ORDER_URL = 'http://127.0.0.1:8000/api/orders/'
+
 Vue.component('modal-carrito-table', {
   template: `
 <div>
@@ -64,7 +66,10 @@ Vue.component('modal-carrito-table', {
             
           </tbody>
         </table> -->
-
+        <div class="md-form">
+          <textarea id="form7" class="md-textarea form-control" rows="3"  v-model="observations"></textarea>
+          <label for="form7">Aclaraciones</label>
+        </div>
         </div>
         <!--Footer-->
         <div class="modal-footer">
@@ -120,7 +125,7 @@ props : ['mesa',"token"],
     
 
       console.log(order);
-      axios.post('http://127.0.0.1:8000/api/orders/', order, {
+      axios.post(SEND_ORDER_URL, order, {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
           }
