@@ -22,48 +22,42 @@
     <title>Menu</title>
 </head>
 
-<body>
+<body class="items-menu bg-image shadow-2-strong">
+
     <div id="menu" class="items-menu ">
+
         <nav-bar></nav-bar>
 
-
-        <div class="bg-image shadow-2-strong ">
-
-            <div class="container d-flex align-items-center justify-content-center text-center h-100 mt-5">
-                <div class="text-white mt-5">
-                    <about></about>
-                    <p>Usted se encuentra en la mesa {{mesa}} con token {{token}}</p>
-                </div>
+        <div class="container d-flex align-items-center justify-content-center text-center h-100 ">
+            <div class="text-white ">
+                <about></about>
+                <p>Usted se encuentra en la mesa {{mesa}} con token {{token}}</p>
             </div>
-
         </div>
+
         <div id="comienzo-menu"></div>
-        <div class="container mt-5 "></div>
-
-        <div data-spy="scroll" data-target="#navbar-example2" class="scrollspy-example" data-offset="0">
-        </div>
-
         <div>
-            <section>
-                <div id="items-menu" class="bg-image shadow-2-strong ">
-                    <hr style="background-color:rgb(56, 55, 55); height: 5px;">
-                    <h2 class="text-center mt-5 subFont text-white" id="carta">Aqui encontrará toda nuestra carta</h2>
-                    <h4 class="text-light mt-5 subFont ml-2">Cervezas</h4>
-                    <hr style="background-color:rgb(56, 55, 55); height: 0px; border:1px dashed;">
 
-                    <div class="list-group list-group-flush">
-                        <menu-list v-for="item of cervezas" class="list-group-item  " aria-current="true"
-                            style="background-color: transparent;" v-on:agregar="agregarItem($event,$event)"
-                            v-on:restar="quitarItem($event,$event)" :item="item" v-bind:key="item.id"></menu-list>
-                    </div>
-                </div>
-            </section>
             <section>
-                <div class="col-md-6 " id="contacto">
+                <hr style="background-color:rgb(56, 55, 55); height: 5px;">
+                <h2 class="text-center mt-5 subFont text-white" id="carta">Aqui encontrará toda nuestra carta</h2>
+                <h4 class="text-light mt-5 subFont ml-2">Cervezas</h4>
+                <hr style="background-color:rgb(56, 55, 55); height: 0px; border:1px dashed;">
+
+                <div class="list-group list-group-flush">
+                    <menu-list v-for="item of cervezas" class="list-group-item  " aria-current="true"
+                        style="background-color: transparent;" v-on:agregar="agregarItem($event,$event)"
+                        v-on:restar="quitarItem($event,$event)" :item="item" v-bind:key="item.id"></menu-list>
+                </div>
+
+            </section>
+
+            <section>
+                <div class="text-center text-white" id="contacto">
                     <h2 class="secondary-font">Informacion </h2>
                     <p>Ubicación: Alem 1234, Bahia Blanca, Argentina. </p>
                     <p> Telefono: 291 2578987</p>
-                    <p> Email: Mulaika@Mulaika.com</p>
+                    <p class=""> Email: Mulaika@Mulaika.com</p>
                 </div>
             </section>
         </div>
@@ -71,7 +65,7 @@
         <modal-carrito-table :mesa="mesa" :token="token"></modal-carrito-table>
         <modal-confirm></modal-confirm>
     </div>
-    </div>
+
 </body>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
