@@ -29,7 +29,7 @@ Vue.component('about', {
                     <div class="row mt-3">
                     <div class="col-1"></div>
                         <div class="col-10 ">
-                        <a type="button" href="#comienzo-menu" class="btn btn-red rounded-pill btn-block" data-mdb-ripple-color="light" @click="solicitarCuenta()">PEDIR CUENTA</a>
+                        <a type="button" href="#menu" class="btn btn-red rounded-pill btn-block" data-mdb-ripple-color="light" @click="solicitarCuenta()">PEDIR CUENTA</a>
                         </div>
                         <div class="col-1"></div>
                     </div>
@@ -37,7 +37,7 @@ Vue.component('about', {
                     <div class="row mt-3">
                     <div class="col-1"></div>
                         <div class="col-10 ">
-                        <a type="button" href="#comienzo-menu" class="btn btn-red rounded-pill btn-block" data-mdb-ripple-color="light" @click="llamarMozo()">LLAMAR MOZO</a>
+                        <a type="button" href="#menu" class="btn btn-red rounded-pill btn-block" data-mdb-ripple-color="light" @click="llamarMozo()">LLAMAR MOZO</a>
                         </div>
                         <div class="col-1"></div>
                     </div>
@@ -45,7 +45,7 @@ Vue.component('about', {
                     <div class="row mt-3">
                     <div class="col-1"></div>
                         <div class="col-10 ">
-                        <a type="button" class="btn btn-red rounded-pill btn-block" data-mdb-ripple-color="light" @click="solicitarMisPedidos()" data-toggle="modal" data-target="#modalPedidos">MIS PEDIDOS</a>
+                        <a type="button" href="#menu" class="btn btn-red rounded-pill btn-block" data-mdb-ripple-color="light" @click="solicitarMisPedidos()" data-toggle="modal" data-target="#modalPedidos">MIS PEDIDOS</a>
                         </div>
                         <div class="col-1"></div>
                     </div>
