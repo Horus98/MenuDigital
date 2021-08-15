@@ -45,7 +45,7 @@ Vue.component('about', {
                     <div class="row mt-3">
                     <div class="col-1"></div>
                         <div class="col-10 ">
-                        <a type="button" class="btn btn-red rounded-pill btn-block" data-mdb-ripple-color="light" @click="solicitarMisPedidos()">MIS PEDIDOS</a>
+                        <a type="button" class="btn btn-red rounded-pill btn-block" data-mdb-ripple-color="light" @click="solicitarMisPedidos()" data-toggle="modal" data-target="#modalPedidos">MIS PEDIDOS</a>
                         </div>
                         <div class="col-1"></div>
                     </div>
@@ -57,8 +57,42 @@ Vue.component('about', {
                          </div>
                          <div class="col-1"></div>
                     </div>
-                </section>
+
+                    <div class="modal fade text-dark" id="modalPedidos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <!--Header-->
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="myModalLabel">Tus pedidos</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        </div>
+                        <!--Body-->
+                        <div class="modal-body">
+                          <ul class="list-group">
+                            <li class="list-group-item " v-for= "item of misPedidos">
+                              <div class="row ">
+                                <div class="col-6 text-center align-middle"><label class="secondary-font-md">{{item.name}}</label></div>
+                                <div class="col-6 text-center align-middle"><label class="secondary-font-md ">{{item.cantidad}}</label></div>
+                              </div>
+                            </li>
+                          </ul>   
+                        </div>
+                        <!--Footer-->
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-primary btn-md" data-dismiss="modal">Salir</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+</div>
     
+                </section>
+                
     `,
     data() {
         return {
@@ -83,6 +117,8 @@ Vue.component('about', {
                     this.misPedidos = response['data'];
                 })
                 .catch(error => console.error(error)); 
+            //Imitamos que nos llegan un par de pedidos.
+            this.formatearRespuesta(this.misPedidos)
         },
         axiosPost(mensaje, url){
             axios.post(url, mensaje, {
@@ -102,6 +138,18 @@ Vue.component('about', {
             swal("En un momento sera atendido", {
               timer: 3000
             })
+        },
+        formatearRespuesta(ordenes){
+            this.misPedidos = 
+                [{
+                    "name": "IPA",
+                    "cantidad": "5"
+                },
+                {   "name": "APA",
+                    "cantidad": "1"
+                    
+                }
+                ]
         }
     }
 });
