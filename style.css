@@ -101,27 +101,9 @@
     .fade-enter,
     .fade-leave-to
 
-    /* .fade-leave-active below version 2.1.8 */
         {
         opacity: 0;
     }
-
-    /* .btn-xs {
-        padding: .25rem .4rem;
-        font-size: .875rem;
-        line-height: .2rem;
-        border-radius: .2rem;
-    } */
-
-
-    /*   .btn-xs-amount {
-        padding: .25rem .4rem;
-        font-size: .750rem;
-        line-height: .04rem;
-        width: 2.4rem;
-        border-radius: .2rem;
-    }
- */
 
     .btn-xs-amount {
         padding: .25rem .4rem;
@@ -239,4 +221,12 @@
     .items-menu {
         background: url('./images/Background-menu.jpg');
         height: 100vh;
+    }
+
+    .titulo-item{
+        font-family: 'Palette Mosaic', cursive;
+    }
+
+    .descripcion-item{
+        font-family: 'STIX Two Text', serif;
     }

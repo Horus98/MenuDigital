@@ -3,7 +3,7 @@ Vue.component('menu-list',{
     <div>
         
             <div class="d-flex w-100 justify-content-between">
-                <p class="mb-1 text-white">{{item.name}}</p>
+                <p class="mb-1 text-white titulo-item">{{item.name}}</p>
                 <small class="text-white">$ {{new Intl.NumberFormat("de-DE").format(item.price)}} 
                     <div class="btn-group " role="group" aria-label="Basic example">
                       
@@ -14,7 +14,7 @@ Vue.component('menu-list',{
                     </div> 
                 </small>
             </div>
-            <small class="text-white">{{item.description}}</small>
+            <small class="text-white descripcion-item">{{item.description}}</small>
             <hr style="background-color:rgb(255, 255, 255); height: 1px;">
 
         </div>
