@@ -1,9 +1,9 @@
 const CUENTA_URL = "www.cuentaporfavor.com"
 const LLAMAR_MOZO_URL = "www.necesitoayudamozo.com"
-const MIS_PEDIDOS_URL = "www.mispedidos.com"
+const MIS_PEDIDOS_URL = "http://127.0.0.1:8000/api/orders/table/"
 
 Vue.component('about', {
-    template: `
+  template: `
     <section id="home">
                     <h2 class="text-center heading-font" id="presentacion"> <span class="text-danger">MULAIKA</span>
                          
@@ -71,14 +71,26 @@ Vue.component('about', {
                         </div>
                         <!--Body-->
                         <div class="modal-body">
+                        <div class="card mb-3" v-for= "orden of misPedidos">
+                        <div class="card-header">
+                          Orden #{{orden.id}}
+                        </div>
+                        <div class="card-body">
                           <ul class="list-group">
-                            <li class="list-group-item " v-for= "item of misPedidos">
-                              <div class="row ">
-                                <div class="col-6 text-center align-middle"><label class="secondary-font-md">{{item.name}}</label></div>
-                                <div class="col-6 text-center align-middle"><label class="secondary-font-md ">{{item.cantidad}}</label></div>
-                              </div>
-                            </li>
-                          </ul>   
+                              <li class="list-group-item " v-for= "item of orden.items">
+                                  <div class="row ">
+                                      <div class="col-6 text-left align-middle"><label class="secondary-font-md">{{item.name}}</label></div>
+                                      <div class="col-3 text-center align-middle"><label class="secondary-font-md">{{item.amount}} ud.</label></div>
+                                      <div class="col-3 text-center align-middle"><label class="secondary-font-md">$ {{item.amount * item.price}}</label></div>
+                                  </div>
+                              </li>
+                          </ul>
+                        </div>
+                         <h5 class="card-header text-left">Total: $ {{orden.total}}</h5>
+                         <h5 class="card-header text-left">Hora: {{formatTime(orden.created_at)}}</h5>
+                      
+                      </div>
+                      
                         </div>
                         <!--Footer-->
                         <div class="modal-footer">
@@ -94,62 +106,69 @@ Vue.component('about', {
                 </section>
                 
     `,
-    data() {
-        return {
-          misPedidos: "",
-        }
-    },
+  data() {
+    return {
+      misPedidos: "",
 
-    methods: {
-        llamarMozo(){
-            console.log("LLamando el mozo")
-            this.axiosPost("Ayuda mozo", LLAMAR_MOZO_URL)
-        },
-        solicitarCuenta(){
-            console.log("Solicitando la cuenta")
-            this.axiosPost("Cuenta por favor!", CUENTA_URL)
-        },
-        solicitarMisPedidos(){
-            console.log("Solicitando mis pedidos")
-            axios
-                .get(MIS_PEDIDOS_URL)
-                .then(response => {
-                    this.misPedidos = response['data'];
-                })
-                .catch(error => console.error(error)); 
-            //Imitamos que nos llegan un par de pedidos.
-            this.formatearRespuesta(this.misPedidos)
-        },
-        axiosPost(mensaje, url){
-            axios.post(url, mensaje, {
-                headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded'
-                }
-              })
-              .then(response => {
-                if (response.status === 200) {
-                  this.notify();
-                };
-              }).catch(e => {
-                
-              });
-        },
-        notify() {
-            swal("En un momento sera atendido", {
-              timer: 3000
-            })
-        },
-        formatearRespuesta(ordenes){
-            this.misPedidos = 
-                [{
-                    "name": "IPA",
-                    "cantidad": "5"
-                },
-                {   "name": "APA",
-                    "cantidad": "1"
-                    
-                }
-                ]
-        }
     }
+  },
+ 
+  methods: {
+    llamarMozo() {
+      console.log("LLamando el mozo")
+      this.axiosPost("Ayuda mozo", LLAMAR_MOZO_URL)
+    },
+    solicitarCuenta() {
+      console.log("Solicitando la cuenta")
+      this.axiosPost("Cuenta por favor!", CUENTA_URL)
+    },
+    solicitarMisPedidos() {
+      const urlParams = new URLSearchParams(window.location.search);
+      mesa = urlParams.get('mesa');
+      token = urlParams.get('token');
+
+      console.log("Solicitando mis pedidos")
+      axios
+        .get(this.buildURL(mesa,token))
+        .then(response => {
+          this.misPedidos = response['data'];
+          console.log(this.misPedidos)
+        })
+        .catch(error => console.error(error));
+
+    },
+    axiosPost(mensaje, url) {
+      axios.post(url, mensaje, {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        })
+        .then(response => {
+          if (response.status === 200) {
+            this.notify();
+          };
+        }).catch(e => {
+
+        });
+    },
+    notify() {
+      swal("En un momento sera atendido", {
+        timer: 3000
+      })
+    },
+    formatTime(date) {
+      let dates = new Date(date)
+      let horas = dates.getUTCHours() 
+      let minutos = dates.getUTCMinutes()
+      return  this.addZero(horas) + ":" + this.addZero(minutos)
+
+    },
+    addZero(time){
+      if (time < 10)  time = '0' + time;
+      return time
+    },
+    buildURL(mesa,token){
+      return MIS_PEDIDOS_URL+""+mesa+"?token="+token
+    }
+  }
 });

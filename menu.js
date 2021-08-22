@@ -1,9 +1,6 @@
-let cervezasLocales = [{"id" : 1,"name" : "IPA", "description" : "Amarga", "price": 120},
-                {"id" : 2,"name" : "APA", "description" : "Amarga y muy lupulada","price": 120},
-                {"id" : 3,"name" : "BLACK IPA", "description" : "Amarga y oscura como la noche   ", "price": 130}
-            ]
 
-const ITEMS_URL = 'http://127.0.0.1:8000/api/items-stock/'
+
+const ITEMS_URL = 'http://127.0.0.1:8000/api/items?in_stock=true'
 
 const menu = new Vue({
     el: '#menu',
@@ -23,19 +20,15 @@ const menu = new Vue({
             store.commit('quitar', item);
         },
         getBeerData() {
-           /*  axios
-                .get(ITEMS_URL)
-                .then(response => {
-                    this.cervezas = response['data'];
-                })
-                .catch(error => console.error()); */
-                this.cervezas = cervezasLocales
-                console.log(this.cervezas)
-               
-                
-               
+             axios
+                 .get(ITEMS_URL)
+                 .then(response => {
+                     this.cervezas = response["data"];
+                     
+                 })
+                 .catch(error => console.error());
         },
-        getParametrosFromUrl(){
+        getParametrosFromUrl() {
             const valoresParametros = window.location.search;
             const urlParams = new URLSearchParams(valoresParametros);
             this.mesa = urlParams.get('mesa');
@@ -48,4 +41,3 @@ const menu = new Vue({
     }
 
 });
-

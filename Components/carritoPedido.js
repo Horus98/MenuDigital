@@ -113,9 +113,11 @@ props : ['mesa',"token"],
       if (cantidad > 0)
         store.commit('quitar', item);
     },
+
+    //Refactorizar en dos funciones.
     buildOrder() {
       let order = {
-        "table": this.mesa,
+        "table": parseInt(this.mesa,10),
         "items": Array.from(store.state.cantidadItemSeleccionado.keys()),
         "quantities": Array.from(store.state.cantidadItemSeleccionado.values()),
         "comments" : this.observations,
@@ -123,17 +125,18 @@ props : ['mesa',"token"],
       };
 
     
-
       console.log(order);
       axios.post(SEND_ORDER_URL, order, {
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/json'
           }
         })
         .then(response => {
           if (response.status === 200) {
             this.notify();
             this.clear();
+            $("#modalCart").modal("hide");
+
           };
         }).catch(e => {
           console.log(e);
