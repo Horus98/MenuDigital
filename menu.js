@@ -1,6 +1,6 @@
 
 
-const ITEMS_URL = 'http://127.0.0.1:8000/api/items?in_stock=true'
+const ITEMS_URL = "http://beer-menu-iaw.herokuapp.com/api/items?in_stock=true"
 
 const menu = new Vue({
     el: '#menu',
