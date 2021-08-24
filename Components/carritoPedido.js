@@ -1,4 +1,4 @@
-const SEND_ORDER_URL = 'https://beer-menu-iaw.herokuapp.com/api/orders/'
+const SEND_ORDER_URL = 'http://beer-menu-iaw.herokuapp.com/api/orders/'
 
 Vue.component('modal-carrito-table', {
   template: `
@@ -127,10 +127,9 @@ props : ['mesa',"token"],
     
       console.log(order);
       axios.post(SEND_ORDER_URL, order, {
-          headers: {
-            "Access-Control-Allow-Headers" : "Content-Type",
-            "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
-          }
+        headers: {
+          'Content-Type': 'application/json'
+        }
         })
         .then(response => {
           if (response.status === 200) {
