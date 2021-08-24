@@ -1,6 +1,6 @@
 const CUENTA_URL = "www.cuentaporfavor.com"
 const LLAMAR_MOZO_URL = "www.necesitoayudamozo.com"
-const MIS_PEDIDOS_URL = "https://beer-menu-iaw.herokuapp.com/api/orders/table/"
+const MIS_PEDIDOS_URL = "http://beer-menu-iaw.herokuapp.com/api/orders/table/"
 
 Vue.component('about', {
   template: `
@@ -140,7 +140,7 @@ Vue.component('about', {
     axiosPost(mensaje, url) {
       axios.post(url, mensaje, {
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/json'
           }
         })
         .then(response => {
