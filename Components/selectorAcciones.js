@@ -1,6 +1,6 @@
 const CUENTA_URL = "www.cuentaporfavor.com"
 const LLAMAR_MOZO_URL = "www.necesitoayudamozo.com"
-const MIS_PEDIDOS_URL = "http://beer-menu-iaw.herokuapp.com/api/orders/table"
+const MIS_PEDIDOS_URL = "https://immense-crag-16022.herokuapp.com/api/orders/table"
 
 Vue.component('about', {
   template: `
