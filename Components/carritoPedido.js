@@ -1,4 +1,4 @@
-const SEND_ORDER_URL = 'https://immense-crag-16022.herokuapp.com/api/orders'
+const SEND_ORDER_URL = 'https://beermenu.herokuapp.com/api/orders'
 
 Vue.component('modal-carrito-table', {
   template: `
