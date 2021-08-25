@@ -1,6 +1,6 @@
 
 
-const ITEMS_URL = "https://beer-menu-iaw.herokuapp.com/api/items?in_stock=true"
+const ITEMS_URL = "https://beermenu.herokuapp.com/api/items?in_stock=true"
 
 const menu = new Vue({
     el: '#menu',
