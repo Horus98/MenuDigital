@@ -84,7 +84,7 @@ Vue.component('modal-carrito-table', {
 <!-- Modal: modalCart -->
 </div>
 `,
-props : ['mesa',"token"],
+  props: ['mesa', "token"],
   data() {
     return {
       items: store.state.cantidadItemSeleccionado,
@@ -117,33 +117,34 @@ props : ['mesa',"token"],
     //Refactorizar en dos funciones.
     buildOrder() {
       let order = {
-        "table": parseInt(this.mesa,10),
+        "table": parseInt(this.mesa, 10),
         "items": Array.from(store.state.cantidadItemSeleccionado.keys()),
         "quantities": Array.from(store.state.cantidadItemSeleccionado.values()),
-        "comments" : this.observations,
+        "comments": this.observations,
         "token": this.token
       };
 
-    
+
       console.log(order);
       axios.post(SEND_ORDER_URL, order, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
+          headers: {
+            'Content-Type': 'application/json'
+          }
         })
         .then(response => {
           if (response.status === 200) {
-            this.notify();
+            this.notify("Tu pedido ha sido enviado!", "Momento de esperar!", "success");
             this.clear();
             $("#modalCart").modal("hide");
-
-          };
+          } 
         }).catch(e => {
-          console.log(e);
+          this.notify("Ha ocurrido un error", "Por favor intente de nuevo o llame al mozo!", "error");
+          this.clear();
+          $("#modalCart").modal("hide");
         });
     },
-    notify() {
-      swal("Tu pedido ha sido enviado!", "Momento de esperar!", "success", {
+    notify(titulo, mensaje, estado) {
+      swal(titulo, mensaje, estado, {
         timer: 3000
       });
     }
