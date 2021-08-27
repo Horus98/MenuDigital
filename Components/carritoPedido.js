@@ -22,8 +22,8 @@ Vue.component('modal-carrito-table', {
           <ul class="list-group">
             <li class="list-group-item " v-for= "item of $store.state.itemsSeleccionados">
               <div class="row">
-                <div class="col-3 text-center align-middle"><label class="secondary-font-md">{{item.name}}</label></div>
-                <div class="col-3 text-center align-middle"><label class="secondary-font-md ">{{price(item)}}</label></div>
+                <div class="col-3 text-center align-middle mt-2"><label class="subFont-md">{{item.name}}</label></div>
+                <div class="col-3 text-center align-middle mt-2"><label class="subFont-md ">{{price(item)}}</label></div>
                 <div class="col-6 text-center align-middle">
                   <div class="btn-group " role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-grey btn-xs-amount " @click = "restar(item)"><i class="fas fa-minus"></i></button>
