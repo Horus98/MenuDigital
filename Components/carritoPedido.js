@@ -74,7 +74,7 @@ Vue.component('modal-carrito-table', {
         <!--Footer-->
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-primary btn-md" data-dismiss="modal">Cancelar</button>
-          <button class="btn btn-primary btn-md" @click="buildOrder()">Enviar pedido</button>
+          <button class="btn btn-primary btn-md" @click="buildOrder()" id="btn-enviar-pedido">Enviar pedido</button>
         </div>
       </div>
     </div>
@@ -116,6 +116,7 @@ Vue.component('modal-carrito-table', {
 
     //Refactorizar en dos funciones.
     buildOrder() {
+      $('#btn-enviar-pedido').prop('disabled', true);
       let order = {
         "table": parseInt(this.mesa, 10),
         "items": Array.from(store.state.cantidadItemSeleccionado.keys()),
@@ -123,9 +124,6 @@ Vue.component('modal-carrito-table', {
         "comments": this.observations,
         "token": this.token
       };
-
-
-      console.log(order);
       axios.post(SEND_ORDER_URL, order, {
           headers: {
             'Content-Type': 'application/json'
@@ -147,6 +145,7 @@ Vue.component('modal-carrito-table', {
       swal(titulo, mensaje, estado, {
         timer: 3000
       });
+      $('#btn-enviar-pedido').prop('disabled', false);
     }
   },
 
