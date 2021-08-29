@@ -1,6 +1,6 @@
 const CUENTA_URL = "www.cuentaporfavor.com"
 const LLAMAR_MOZO_URL = "https://beermenu.herokuapp.com/api/attention_requests"
-const MIS_PEDIDOS_URL = "https://beermenu.herokuapp.com/api/orders/table"
+const MIS_PEDIDOS_URL = "https://beermenu.herokuapp.com/api/orders/table/"
 
 Vue.component('about', {
   template: `
@@ -79,9 +79,9 @@ Vue.component('about', {
                           <ul class="list-group">
                               <li class="list-group-item " v-for= "item of orden.items">
                                   <div class="row ">
-                                      <div class="col-6 text-left align-middle"><label class="secondary-font-md">{{item.name}}</label></div>
-                                      <div class="col-3 text-center align-middle"><label class="secondary-font-md">{{item.amount}} ud.</label></div>
-                                      <div class="col-3 text-center align-middle"><label class="secondary-font-md">$ {{item.amount * item.price}}</label></div>
+                                      <div class="col-6 text-left align-middle"><label class="subFont-md">{{item.name}}</label></div>
+                                      <div class="col-3 text-center align-middle"><label class="subFont-md">{{item.amount}} ud.</label></div>
+                                      <div class="col-3 text-center align-middle"><label class="subFont-md">$ {{item.amount * item.price}}</label></div>
                                   </div>
                               </li>
                           </ul>
