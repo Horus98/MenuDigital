@@ -232,7 +232,9 @@ aria-hidden="true">
           this.misPedidos = response['data'];
           console.log(this.misPedidos)
         })
-        .catch(this.errorNotification());
+        .catch(e => {
+          this.errorNotification();
+         });
     },
     axiosPost(mensaje, url) {
       console.log(mensaje)
