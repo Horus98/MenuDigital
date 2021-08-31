@@ -29,7 +29,7 @@ Vue.component('about', {
                     <div class="row mt-3">
                     <div class="col-1"></div>
                         <div class="col-10 ">
-                        <a type="button" href="#menu" class="btn btn-red rounded-pill btn-block" data-mdb-ripple-color="light" @click="solicitarCuenta()">PEDIR CUENTA</a>
+                        <a type="button" href="#menu" class="btn btn-red rounded-pill btn-block" data-mdb-ripple-color="light" data-toggle="modal" data-target="#modalCuenta">PEDIR CUENTA</a>
                         </div>
                         <div class="col-1"></div>
                     </div>
@@ -102,9 +102,59 @@ Vue.component('about', {
                 </div>
 
 </div>
+
+
+<div class="modal fade text-dark" id="modalCuenta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <!--Header-->
+    <div class="modal-header">
+      <h4 class="modal-title" id="myModalLabel">Tus pedidos</h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <!--Body-->
     
-                </section>
-                
+    <div class="modal-body text-left">
+    <div class="mb-1">   Como desea abonar?    </div>
+
+    <div class="form-check form-check-inline ml-1">
+  <input
+    class="form-check-input"
+    type="radio"
+    name="inlineRadioOptions"
+    id="cash"
+    value="Abona en efectivo"
+  />
+  <label class="form-check-label" for="cash">Efectivo</label>
+</div>
+
+<div class="form-check form-check-inline ml-1">
+  <input
+    class="form-check-input"
+    type="radio"
+    name="inlineRadioOptions"
+    id="card"
+    value="Abona con tarjeta"
+  />
+  <label class="form-check-label" for="card">Tarjeta</label>
+</div>
+
+    </div>
+    <!--Footer-->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-primary btn-md" data-dismiss="modal" >Cancelar</button>
+      <button type="button" class="btn btn-primary btn-md"  data-dismiss="modal"  @click="solicitarCuenta()">Solicitar Cuenta</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+
+               
     `,
   props: ['mesa', "token"],
   data() {
@@ -126,10 +176,12 @@ Vue.component('about', {
       this.axiosPost(mensajeMozo, LLAMAR_MOZO_URL)
     },
     solicitarCuenta() {
+      console.log("Solicitando la cuenta")
+      let metodoPago = document.querySelector('input[name="inlineRadioOptions"]:checked').value;
       let mensajeCuenta = {
         "token": this.token,
         "table": this.mesa,
-        "comments": "cash",
+        "comments": metodoPago,
         "type":"BILL"
       }
       this.axiosPost(mensajeCuenta, CUENTA_URL)
@@ -146,6 +198,7 @@ Vue.component('about', {
 
     },
     axiosPost(mensaje, url) {
+      console.log(mensaje)
       axios.post(url, mensaje, {
           headers: {
             'Content-Type': 'application/json'
@@ -178,6 +231,5 @@ Vue.component('about', {
     buildURL(mesa,token){
       return MIS_PEDIDOS_URL+""+mesa+"?token="+token
     },
-
   }
 });

@@ -3,7 +3,6 @@ const SEND_ORDER_URL = 'https://beermenu.herokuapp.com/api/orders'
 Vue.component('modal-carrito-table', {
   template: `
 <div>
-  
 
   <!-- Modal: modalCart -->
   <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
