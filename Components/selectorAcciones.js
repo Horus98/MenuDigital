@@ -37,7 +37,7 @@ Vue.component('about', {
                     <div class="row mt-3">
                     <div class="col-1"></div>
                         <div class="col-10 ">
-                        <a type="button" href="#menu" class="btn btn-red rounded-pill btn-block" data-mdb-ripple-color="light" @click="llamarMozo()">LLAMAR MOZO</a>
+                        <a type="button" href="#menu" class="btn btn-red rounded-pill btn-block" data-mdb-ripple-color="light" data-toggle="modal" data-target="#modalMozo">LLAMAR MOZO</a>
                         </div>
                         <div class="col-1"></div>
                     </div>
@@ -152,7 +152,36 @@ aria-hidden="true">
 </div>
 </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="modalMozo" tabindex="-1" role="dialog" aria-labelledby="modalMozoLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark subFont-md" id="modalMozoLabel">¿Desea llamar al mozo?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="md-form">
+          <textarea id="form7" class="md-textarea form-control" rows="3"  v-model="comentarioMozo"></textarea>
+          <label for="form7">Aclaraciones</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary btn-md" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary btn-md"  @click="llamarMozo()">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </section>
+
+
+
+
 
                
     `,
@@ -161,6 +190,7 @@ aria-hidden="true">
     return {
       misPedidos: "",
       botonHabilitado: true,
+      comentarioMozo: "",
     }
   },
   computed: {
@@ -174,10 +204,12 @@ aria-hidden="true">
       let mensajeMozo = {
         "token": this.token,
         "table": this.mesa,
-        "comments": "Sal",
+        "comments": this.comentarioMozo,
         "type":"WAITER"
       }
       this.axiosPost(mensajeMozo, LLAMAR_MOZO_URL)
+      this.comentarioMozo = ""
+      $("#modalMozo").modal("hide");
     },
     solicitarCuenta() {
       console.log("Solicitando la cuenta")
