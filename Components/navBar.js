@@ -7,7 +7,7 @@ Vue.component('nav-bar',{
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#menu" style= "font-family: 'Roboto', sans-serif; font-family: 'Style Script', cursive; font-size: 22px;">Mulaika</a>
+    <a class="navbar-brand" href="#menu" style= "font-family: 'Roboto', sans-serif; font-family: 'Style Script', cursive; font-size: 22px;">Singleton</a>
         <a class="navbar-brand"  href="" v-if = "$store.state.itemsSeleccionados.length > 0" data-toggle="modal" data-target="#modalCart" >
             <i class="fas fa-shopping-cart"></i> 
             <transition name="fade">

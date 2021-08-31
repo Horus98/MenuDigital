@@ -1,11 +1,11 @@
-const CUENTA_URL = "www.cuentaporfavor.com"
+const CUENTA_URL = "https://beermenu.herokuapp.com/api/attention_requests"
 const LLAMAR_MOZO_URL = "https://beermenu.herokuapp.com/api/attention_requests"
 const MIS_PEDIDOS_URL = "https://beermenu.herokuapp.com/api/orders/table/"
 
 Vue.component('about', {
   template: `
     <section id="home">
-                    <h2 class="text-center heading-font" id="presentacion"> <span class="text-danger">MULAIKA</span>
+                    <h2 class="text-center heading-font" id="presentacion"> <span class="text-danger">SINGLETON</span>
                          
                     </h2>
                     <h5 class="text-center mt-5"> </h5>
@@ -106,6 +106,7 @@ Vue.component('about', {
                 </section>
                 
     `,
+  props: ['mesa', "token"],
   data() {
     return {
       misPedidos: "",
@@ -116,20 +117,27 @@ Vue.component('about', {
   methods: {
     llamarMozo() {
       console.log("LLamando el mozo")
-      this.axiosPost("Ayuda mozo", LLAMAR_MOZO_URL)
+      let mensajeMozo = {
+        "token": this.token,
+        "table": this.mesa,
+        "comments": "Sal",
+        "type":"WAITER"
+      }
+      this.axiosPost(mensajeMozo, LLAMAR_MOZO_URL)
     },
     solicitarCuenta() {
-      console.log("Solicitando la cuenta")
-      this.axiosPost("Cuenta por favor!", CUENTA_URL)
+      let mensajeCuenta = {
+        "token": this.token,
+        "table": this.mesa,
+        "comments": "cash",
+        "type":"BILL"
+      }
+      this.axiosPost(mensajeCuenta, CUENTA_URL)
     },
     solicitarMisPedidos() {
-      const urlParams = new URLSearchParams(window.location.search);
-      mesa = urlParams.get('mesa');
-      token = urlParams.get('token');
-
       console.log("Solicitando mis pedidos")
       axios
-        .get(this.buildURL(mesa,token))
+        .get(this.buildURL(this.mesa,this.token))
         .then(response => {
           this.misPedidos = response['data'];
           console.log(this.misPedidos)
@@ -152,9 +160,9 @@ Vue.component('about', {
         });
     },
     notify() {
-      swal("En un momento sera atendido", {
+      swal("Su petición ha sido enviada", "Por favor, aguarde un momento y sera atendido", "success", {
         timer: 3000
-      })
+      });
     },
     formatTime(date) {
       let dates = new Date(date)
@@ -169,6 +177,7 @@ Vue.component('about', {
     },
     buildURL(mesa,token){
       return MIS_PEDIDOS_URL+""+mesa+"?token="+token
-    }
+    },
+
   }
 });
