@@ -29,7 +29,7 @@ Vue.component('about', {
                     <div class="row mt-3">
                     <div class="col-1"></div>
                         <div class="col-10 ">
-                        <a type="button" href="#menu" class="btn btn-red rounded-pill btn-block" data-mdb-ripple-color="light" data-toggle="modal" data-target="#modalCuenta">PEDIR CUENTA</a>
+                        <button type="button" href="#menu" class="btn btn-red rounded-pill btn-block" data-mdb-ripple-color="light" data-toggle="modal" data-target="#modalCuenta" :disabled = 'isDisabled'>PEDIR CUENTA</button>
                         </div>
                         <div class="col-1"></div>
                     </div>
@@ -160,10 +160,14 @@ aria-hidden="true">
   data() {
     return {
       misPedidos: "",
-
+      botonHabilitado: true,
     }
   },
- 
+  computed: {
+  	isDisabled: function(){
+    	return !this.botonHabilitado;
+    }
+  },
   methods: {
     llamarMozo() {
       console.log("LLamando el mozo")
@@ -184,6 +188,7 @@ aria-hidden="true">
         "comments": metodoPago,
         "type":"BILL"
       }
+      this.botonHabilitado = false
       this.axiosPost(mensajeCuenta, CUENTA_URL)
     },
     solicitarMisPedidos() {
