@@ -138,6 +138,7 @@ aria-hidden="true">
     name="inlineRadioOptions"
     id="card"
     value="Abona con tarjeta"
+    checked
   />
   <label class="form-check-label" for="card">Tarjeta</label>
 </div>
@@ -190,7 +191,7 @@ aria-hidden="true">
     return {
       misPedidos: "",
       botonHabilitado: true,
-      comentarioMozo: "",
+      comentarioMozo: " ",
     }
   },
   computed: {
@@ -231,8 +232,7 @@ aria-hidden="true">
           this.misPedidos = response['data'];
           console.log(this.misPedidos)
         })
-        .catch(error => console.error(error));
-
+        .catch(this.errorNotification());
     },
     axiosPost(mensaje, url) {
       console.log(mensaje)
@@ -246,7 +246,7 @@ aria-hidden="true">
             this.notify();
           };
         }).catch(e => {
-
+         this.errorNotification();
         });
     },
     notify() {
@@ -268,5 +268,10 @@ aria-hidden="true">
     buildURL(mesa,token){
       return MIS_PEDIDOS_URL+""+mesa+"?token="+token
     },
+    errorNotification(){
+      swal("Ha ocurrido un error", "por favor intente nuevamente", "error", {
+        timer: 3000
+      });
+    }
   }
 });
